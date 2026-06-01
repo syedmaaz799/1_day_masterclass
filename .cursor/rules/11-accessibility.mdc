@@ -1,0 +1,48 @@
+---
+description: Accessibility doctrine — WCAG 2.2 AA, keyboard, screen readers, reduced motion, 3D/canvas a11y, and form accessibility. A premium experience is an accessible one.
+alwaysApply: true
+---
+
+# 11 — Accessibility
+
+## Standard
+Target **WCAG 2.2 AA**. Accessibility is not optional polish — a registrant who can't complete the form is a lost conversion.
+
+## Color & Contrast
+- Body text contrast ≥ 4.5:1; large/display text ≥ 3:1. On `#050505`, white and `--text-2 (#A8B0C0)` must be verified per size.
+- Never convey meaning by color alone (seats remaining, success, errors all carry text/icon too).
+- Focus states use `--primary` and are clearly visible against dark surfaces.
+
+## Keyboard
+- Every interactive element is reachable and operable by keyboard in a logical order.
+- Visible focus ring on all focusables (never `outline: none` without a replacement).
+- Skip-to-content link. Modals/accordions trap and restore focus correctly.
+- Magnetic CTA and hover effects must not break keyboard access or focus visibility.
+
+## Screen Readers & Semantics
+- Semantic HTML: one `<h1>` (hero), correct heading order, `<nav>`, `<main>`, `<section>` with `aria-labelledby`, `<button>` vs `<a>` used correctly.
+- The **3D canvas is `aria-hidden`**; the scroll story's meaning is fully available as real text content (story is never 3D-only — see 05-3d).
+- Countdown announces meaningfully (e.g. `aria-live="polite"` at sensible intervals, not every second; provide a static accessible label like "Event starts June 7, 2026, 2:00 PM IST").
+- Seats-remaining updates via polite live region, not spammy.
+- Icons are decorative (`aria-hidden`) or have accessible labels.
+
+## Forms (cross-ref 09-forms)
+- Every field has a visible, programmatic `<label>` (not placeholder-as-label).
+- Errors: `aria-invalid`, `aria-describedby`, focus moves to first error, messages are text.
+- Select for experience level is a real, accessible control. Required state is announced.
+- Success and pending states announced via live region.
+
+## Motion & Vestibular Safety
+- Fully honor `prefers-reduced-motion: reduce`: disable scroll-scrub, parallax, magnetic CTA, looping motion; counters show final value instantly (cross-ref 06-motion, 05-3d).
+- No content that flashes more than 3x/second.
+
+## Media
+- Testimonial videos: captions/transcripts available; controls keyboard-accessible; no autoplay with sound.
+- All meaningful images have alt text; decorative images have empty alt.
+
+## Targets & Mobile
+- Touch targets ≥ 44×44px. Sticky mobile CTA never obscures form fields or content permanently.
+- Respect zoom up to 200% without breaking layout or hiding the CTA.
+
+## Verification
+- Test with keyboard-only, a screen reader (NVDA/VoiceOver), reduced-motion on, and 200% zoom before considering any section done.

@@ -1,0 +1,51 @@
+---
+description: Component architecture and the canonical section/component inventory. Defines how components are structured, named, composed, and the exact sections the page ships with.
+globs: src/components/**,src/app/**,src/**/*.tsx
+alwaysApply: false
+---
+
+# 07 — Components & Section Inventory
+
+## Architecture Principles
+- **Server Components by default** (Next.js App Router). Add `"use client"` only where interaction, motion, or 3D requires it. Keep client boundaries small and leaf-level.
+- One component = one responsibility. Sections compose primitives; primitives don't know about page context.
+- Co-locate component + its styles + its tests. No giant "utils" dumping ground.
+- Props are typed and explicit; no `any`. Prefer composition over config-prop sprawl.
+
+## Folder Shape
+```
+src/
+  app/                      // routes, layout, metadata
+  components/
+    sections/               // page sections (one file per section below)
+    ui/                     // Button, Field, Accordion, Badge, CountdownTimer, SeatMeter...
+    3d/                     // AICore canvas + stages (see 05-3d)
+    motion/                 // reveal wrappers, ScrollTrigger hooks, Lenis provider
+  lib/                      // analytics, validation schema, device-tier, time/countdown
+  content/                  // event data, FAQ, agenda, copy (single source)
+```
+
+## Canonical Section Inventory (exact, in order)
+1. `HeroSection` — headline "Build Your First AI Employee", subheadline, date/time/price, seats remaining, countdown, primary `Reserve My Seat` + secondary `Watch Demo`, AI Core canvas mount.
+2. `AIShiftSection` — scroll-driven 2023→ChatGPT, 2024→AI Assistants, 2025→AI Workflows, 2026→AI Employees.
+3. `WhatYouBuildSection` — interactive premium reveal cards: AI Lead Generator, Telegram Agent, Gmail Automation Agent, Resume Reviewer, Career Architect.
+4. `LiveWorkflowSection` — animated system: Lead Form → AI Analysis → Telegram Notification → Gmail Draft → Database Update → Follow-Up.
+5. `AgendaSection` — Hour 1 AI Foundations, Hour 2 Build Your Agent, Hour 3 Deploy & Automate.
+6. `InstructorSection` — real founder profile, real achievements, real projects (no fabrication).
+7. `TestimonialsSection` — video-first, authentic, minimal.
+8. `RegistrationSection` — sticky-on-desktop form (see 09-forms), `Reserve My Seat for ₹109`.
+9. `FaqSection` — minimal modern accordion (objection handling).
+10. `FinalCtaSection` — headline "The Future Won't Hire Humans Who Compete With AI. It Will Hire Humans Who Build AI.", large countdown, price reminder, final form, urgency, `Reserve My Seat`.
+11. `FeedbackSection` — post-registration premium feedback survey (see flow in 09-forms / PROJECT_PLAN).
+
+> Do not add sections beyond this list. If a section "only looks cool", it is forbidden (see 01).
+
+## Shared UI Primitives
+`Button` (primary/secondary/ghost), `Field`/`Select`, `Accordion`, `Badge`/`Pill`, `CountdownTimer`, `SeatMeter`, `SectionHeading`, `Reveal` (motion wrapper), `StickyCta` (mobile bar).
+
+## Component Rules
+- Buttons: one primary visual treatment site-wide; variants via prop, not new components.
+- No prop drilling beyond 2 levels — use context for event data / analytics.
+- Every interactive component is keyboard-operable and labelled (see 11-accessibility).
+- Sections read event data from `content/` — never hardcode the date/price inline in multiple places.
+- Lazy-load heavy leaves (3D, video) with `next/dynamic` + suspense skeletons; reserve space to protect CLS.

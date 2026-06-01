@@ -1,0 +1,44 @@
+---
+description: Brand identity, voice, personality, and tone for NeuralVarsity. Defines the emotional register and the aesthetic guardrails the whole site must obey.
+alwaysApply: true
+---
+
+# 02 — Brand & Voice
+
+## Visual Personality
+**Dark Luxury Minimalism.** A blend of Apple (clarity), Linear (precision), Stripe (craft), and Vercel (technical confidence).
+
+## Brand Keywords (lean into these)
+Premium · Precise · Technical · Intelligent · Confident · Futuristic · Human.
+
+## Anti-Keywords (never evoke)
+Cyberpunk · gaming · hacker terminal · neon overload · sci-fi movie set. No "matrix rain", no glitch text, no chrome-robot tropes.
+
+## Voice & Tone
+- **Confident, not hypey.** State outcomes plainly. Let the value speak.
+- **Technical but human.** We respect the reader's intelligence; we never talk down.
+- **Editorial, not salesy.** Short, declarative sentences. White space in the language as well as the layout.
+- **Urgent without panic.** Scarcity is real and stated calmly (seats remaining, countdown), never with fake red-alert spam.
+
+### Voice examples
+```
+❌ "🚀 Unlock the SECRET to AI riches!! Limited time ONLY!!!"
+✅ "Build an AI employee in three hours. Then put it to work."
+
+❌ "Our revolutionary cutting-edge platform leverages synergies."
+✅ "You'll wire a real agent to Telegram and Gmail. Live."
+```
+
+## Naming & Capitalization
+- Product/event names render exactly: **NeuralVarsity**, **Agentic AI Masterclass**, **Build Your First AI Employee**.
+- Use sentence case for body copy and most UI; reserve display-case impact for hero/section headlines.
+- Currency always `₹` glyph, no space: `₹109`.
+
+## Logo / Wordmark
+Wordmark-first (typographic). No mascots, no robot icons. If a mark is used, it is geometric, monochrome on dark, and never animated gratuitously.
+
+## Imagery Doctrine
+Prefer typography, negative space, and the single 3D AI Core over photography. No stock photos. Any real photo (instructor, testimonial video poster) must be high-quality, color-graded toward the dark palette, and intentional.
+
+## Emotional Arc (what the brand should make people feel)
+Curiosity → recognition ("this is the shift") → capability ("I can build this") → urgency ("reserve now"). Brand never sells fear of AI; it sells **agency over AI**.

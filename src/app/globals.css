@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+/*
+  NeuralVarsity — global design tokens & theme architecture (Tailwind v4, CSS-first).
+  Source of truth: .cursor/rules/03-design-system.mdc.
+  Tokens declared in @theme are exposed both as CSS variables (--color-bg, ...)
+  and as Tailwind utilities (bg-bg, text-text-2, etc.). Never hardcode hexes in markup.
+
+  Note: `@theme` is a Tailwind v4 at-rule. Editors without Tailwind v4 CSS support
+  may flag it as "unknown" — that warning is safe to ignore; the build is correct.
+*/
+
+@theme {
+  /* ---- Color palette (exact, do not improvise) ---- */
+  --color-bg: #050505;
+  --color-surface: #0b0d12;
+  --color-primary: #4f7cff;
+  --color-accent: #36e1ff;
+  --color-text: #ffffff;
+  --color-text-2: #a8b0c0;
+  --color-success: #38e27a;
+  /* Documented exception (03-design-system): a dedicated danger hue is required
+     for accessible form-error states. Errors also carry text + icon, never color alone. */
+  --color-danger: #ff6b6b;
+
+  /* ---- Fonts (wired to next/font CSS variables, see src/lib/fonts.ts) ---- */
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Fluid type scale (clamp-based) ---- */
+  --text-display-xl: clamp(3.5rem, 8vw, 7.5rem);
+  --text-display-xl--line-height: 0.95;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-xl--font-weight: 600;
+
+  --text-display-l: clamp(2.5rem, 5vw, 4.5rem);
+  --text-display-l--line-height: 1;
+  --text-display-l--letter-spacing: -0.02em;
+  --text-display-l--font-weight: 600;
+
+  --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 600;
+
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.2;
+  --text-h3--font-weight: 600;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+
+  --text-caption: 0.875rem;
+  --text-caption--line-height: 1.4;
+  --text-caption--font-weight: 500;
+
+  --text-overline: 0.75rem;
+  --text-overline--line-height: 1.2;
+  --text-overline--letter-spacing: 0.16em;
+  --text-overline--font-weight: 600;
+
+  /* ---- Spacing additions (8pt base; Tailwind default scale retained) ---- */
+  --spacing-section: clamp(96px, 12vw, 160px);
+
+  /* ---- Radii ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* ---- Container ---- */
+  --container-content: 1200px;
+
+  /* ---- Easing (motion system, see 06-motion) ---- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Derived / non-utility design constants (alpha variants, hairlines, glows). */
+:root {
+  --hairline: 1px solid rgb(255 255 255 / 0.08);
+  --primary-12: rgb(79 124 255 / 0.12);
+  --primary-glow: 0 0 40px rgb(79 124 255 / 0.35);
+  --accent-12: rgb(54 225 255 / 0.12);
+
+  --duration-micro: 120ms;
+  --duration-ui: 280ms;
+  --duration-reveal: 600ms;
+
+  /* Fixed TopNav height (nav inner is h-16). Single source of truth for safe
+     section-entry offsets and anchor scroll padding. */
+  --nav-h: 4rem;
+}
+
+@layer base {
+  * {
+    border-color: rgb(255 255 255 / 0.08);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Anchor jumps land below the fixed nav. */
+    scroll-padding-top: var(--nav-h);
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    /* Lenis owns smooth scroll; keep native smooth off to avoid conflicts (06-motion). */
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--primary-12);
+    color: var(--color-text);
+  }
+
+  /* Visible focus on dark surfaces (accessibility, 11-accessibility). */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* In-page anchor targets — flush below fixed nav */
+  #register-experience,
+  #demo {
+    scroll-margin-top: var(--nav-h);
+  }
+}
+
+/*
+  "Companies Building the AI Future" (Section 5.5) — the persistent background Core echo.
+  Slow, subtle breathing intelligence behind a scroll-driven story (never decorative).
+  Neutralized by the reduced-motion block below.
+*/
+@keyframes nv-core-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+
+/*
+  Brand-reveal system. Each company lockup (.bl-lockup) starts in a hidden pose chosen by
+  its [data-reveal] kind, and resolves elegantly when the conductor marks the chapter
+  [data-active="true"] (driven by SCROLL, never hover). Multi-path marks (.bl-path) fade
+  in with a subtle stagger. All of it is transition-based, so reduced motion (below) makes
+  it instant — the content is always present, never gated behind motion.
+*/
+.bl-lockup {
+  transition:
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo),
+    filter 0.7s ease,
+    clip-path 0.9s var(--ease-out-expo);
+}
+[data-reveal="assemble"] .bl-lockup {
+  opacity: 0;
+  transform: scale(0.88);
+  filter: blur(6px);
+}
+[data-reveal="rise"] .bl-lockup {
+  opacity: 0;
+  transform: translateY(28px);
+}
+[data-reveal="draw"] .bl-lockup {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+}
+[data-active="true"] .bl-lockup {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  clip-path: inset(0 0 0 0);
+}
+
+.bl-path {
+  opacity: 0;
+  transform: scale(0.7);
+  transform-origin: center;
+  transform-box: fill-box;
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s var(--ease-out-expo);
+}
+.bl-path:nth-child(2) { transition-delay: 0.08s; }
+.bl-path:nth-child(3) { transition-delay: 0.16s; }
+.bl-path:nth-child(4) { transition-delay: 0.24s; }
+[data-active="true"] .bl-path {
+  opacity: 1;
+  transform: none;
+}
+
+/* Vestibular safety: honor reduced-motion globally (06-motion / 11-accessibility). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Brand reveals never gate content behind motion: force every lockup/mark visible,
+     regardless of the scroll-driven [data-active] state. */
+  .bl-lockup,
+  .bl-path {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* Ensemble / static contexts: logos must not wait for [data-active] on a parent chapter. */
+.bl-static.bl-lockup,
+.bl-static .bl-lockup,
+[data-static-brand="true"] .bl-lockup,
+[data-static-brand="true"] .bl-path {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* docs/ANIMATED_BACKGROUND.md */
+.mask-radial {
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+
+.bg-grid-fine {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.025) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.site-bg-static {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 80% 65% at 78% 42%, rgb(79 124 255 / 0.45) 0%, transparent 58%),
+    radial-gradient(ellipse 60% 50% at 55% 50%, rgb(54 225 255 / 0.18) 0%, transparent 52%),
+    radial-gradient(ellipse 100% 90% at 50% 100%, rgb(5 5 5) 0%, rgb(5 5 5) 70%);
+}

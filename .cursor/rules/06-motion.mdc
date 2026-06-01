@@ -1,0 +1,49 @@
+---
+description: Motion system — GSAP ScrollTrigger, Framer Motion, and Lenis usage. Defines easing, timing, scroll choreography, and the rule that motion must communicate, never decorate.
+globs: src/**/*.tsx,src/**/motion/**,src/**/animations/**
+alwaysApply: false
+---
+
+# 06 — Motion System
+
+## First Principle
+**Motion must communicate. Never decorate.** Every animation has a job: guide attention, reveal hierarchy, confirm an action, or advance the story. If it has no job, remove it.
+
+## Tooling & Ownership (avoid conflicts)
+- **Lenis** — smooth scroll, the single scroll authority. Drive GSAP ScrollTrigger from Lenis's scroll callback; do not run two competing smooth-scroll systems.
+- **GSAP + ScrollTrigger** — scroll-linked sequences: the 3D Core scroll story, the AI-shift timeline, the live-workflow system, pinned sections, scrubbed progress.
+- **Framer Motion** — discrete UI motion: mount/exit transitions, hover/tap states, accordion, modal, form feedback, layout transitions.
+- Never animate the same property with two libraries at once. Pick one owner per element.
+
+## Easing & Timing
+```
+ease-out-expo   cubic-bezier(0.16, 1, 0.3, 1)   // primary reveal ease
+ease-in-out     cubic-bezier(0.65, 0, 0.35, 1)  // state transitions
+durations: micro 120ms · ui 240–320ms · reveal 500–700ms · scroll-scrub = scroll-linked
+```
+Default to ease-out for entrances. Keep durations tight; premium = crisp, not slow.
+
+## Approved Patterns
+- **Smooth reveals** — fade + 16–24px rise on enter, staggered for groups (`stagger: 0.06`).
+- **Progressive disclosure** — content arrives as it becomes relevant; never dump everything at once.
+- **Counter animations** — countdown timer, seats remaining, any numeric proof (count once on enter, then static).
+- **Subtle hover states** — hairline brighten, slight scale (≤1.02), pointer cursor affordances.
+- **Magnetic CTAs** — primary CTA attracts the cursor within a small radius (desktop, pointer:fine only).
+- **Pinned scroll stages** — for the 3D story and live workflow, with scrubbed progress.
+
+## Banned Patterns
+Excessive parallax, flashy/gratuitous effects, spinning logos, bouncy springs on serious content, infinite looping distractions, scroll-jacking that traps the user, animation on every element.
+
+## Performance Rules
+- Animate only `transform` and `opacity`. Never animate `top/left/width/height` or layout-triggering props.
+- Use `will-change` sparingly and remove after the animation.
+- Respect 60fps; if a sequence can't hold frame rate, simplify it.
+- Register/kill ScrollTriggers on mount/unmount; refresh on resize and after fonts/3D load to avoid drift.
+
+## Reduced Motion (mandatory)
+On `prefers-reduced-motion: reduce`: disable scroll-scrub story, parallax, magnetic CTA, and counters (show final value instantly). Replace reveals with instant or ≤120ms opacity. The page must be fully usable and beautiful with motion off.
+
+## Choreography Notes
+- One hero entrance sequence, then calm. Don't fight the user's scroll.
+- Section transitions should feel continuous (the 3D Core is the through-line).
+- Confirmations (form success) get a single satisfying, brief success motion — then stop.

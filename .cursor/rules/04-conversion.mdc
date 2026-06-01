@@ -1,0 +1,46 @@
+---
+description: Conversion rate optimization (CRO) doctrine. The highest-priority functional rule — governs CTAs, friction, urgency, trust, and persuasion architecture.
+alwaysApply: true
+---
+
+# 04 — Conversion (Top Priority)
+
+> Conversion outranks aesthetics in every tie. The page exists to turn visitors into registrants.
+
+## Primary Conversion Goal
+A completed registration (Name, Email, Phone, College/Company, Experience Level) for **₹109**. Every section must push toward, or remove friction from, this single action.
+
+## CTA System
+- **Primary CTA** label: `Reserve My Seat` / `Reserve My Seat for ₹109`. Style: `--primary` fill, white text, soft glow, magnetic hover. There is exactly ONE primary visual treatment site-wide.
+- **Secondary CTA**: `Watch Demo` — low-emphasis ghost/text button. Never competes with primary.
+- CTAs must be **persistently reachable**: hero CTA, sticky form on desktop (≥1024px), and a sticky bottom CTA bar on mobile that reveals after the hero scrolls out.
+- Every CTA states or implies the price and the action. No vague "Learn more" as a primary path.
+
+## Friction Reduction
+- Single-column form, 5 fields max, no account creation, no email verification gate before checkout.
+- Inline validation, no surprise required-field errors after submit.
+- Show price (`₹109`) adjacent to every registration CTA — never make users hunt for cost.
+- Reduce cognitive load: one decision per screen. Don't ask the user to compare plans (there is one offer).
+
+## Urgency & Scarcity (real, never fake)
+- **Countdown timer** to June 7, 2026 2:00 PM IST — in hero and final CTA.
+- **Seats Remaining** indicator — must be backed by a real/config-driven number, not random JS. If decrementing, base it on actual data or a documented controlled value; never invent live fake counts.
+- Calm urgency language (see brand voice). No blinking red, no fake "3 people viewing".
+
+## Trust Architecture (place before the ask)
+- Clear what-you-get (Section 3 "What You Will Build").
+- Concrete agenda (Section 5) so the buyer knows exactly what 3 hours delivers.
+- Real instructor authority (Section 6) and authentic testimonials (Section 7) immediately before/around the form.
+- Price transparency + "Live Online" + duration repeated near CTAs.
+
+## Persuasion Architecture (section order = funnel)
+Hook (hero) → Problem/Shift (the AI shift) → Tangible outcomes (what you'll build) → Proof of mechanism (live workflow) → Specifics (agenda) → Credibility (instructor) → Social proof (testimonials) → Action (registration) → Objection handling (FAQ) → Final urgency close.
+
+## Objection Handling
+FAQ must directly answer the real blockers: "Do I need coding?" (No), "Is it recorded?", "What do I need to attend?", "Refunds?", "Who is this for?". Each FAQ removes a reason not to buy.
+
+## Measurement Hooks (build-time requirement)
+Instrument: hero CTA click, secondary CTA click, form field focus (first interaction), form submit, registration success, feedback submit, countdown-expiry view. Use a single typed analytics wrapper (`track(event, props)`). No PII in event props.
+
+## CRO Don'ts
+No multiple competing primary CTAs, no carousel that hides value, no auto-playing audio, no popups that block the offer, no dark patterns. Scarcity must be honest.

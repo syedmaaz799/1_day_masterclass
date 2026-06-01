@@ -1,0 +1,63 @@
+---
+description: Visual design system — color tokens, typography scale, spacing, grid, radii, elevation, and layout primitives. The canonical reference for every visual decision.
+alwaysApply: true
+---
+
+# 03 — Design System
+
+## Color Tokens (exact values — do not improvise)
+```css
+--bg:        #050505; /* page background, near-black */
+--surface:   #0B0D12; /* raised panels, cards, form fields */
+--primary:   #4F7CFF; /* primary action, links, focus */
+--accent:    #36E1FF; /* highlights, data energy, secondary emphasis */
+--text:      #FFFFFF; /* primary text */
+--text-2:    #A8B0C0; /* secondary / muted text */
+--success:   #38E27A; /* confirmations, success states */
+```
+Derive only tints/shades and alpha variants of the above (e.g. `--primary-12: rgb(79 124 255 / 0.12)`). No new hues without a documented reason.
+
+## Color Usage Law
+**Color is rare and earned.** ~90% of the surface is black/near-black + white/grey type. Primary and accent are accents only: one or two saturated moments per viewport, never a wall of color. Gradients are subtle and reserved for the 3D Core and the primary CTA.
+
+## Typography
+- **Display:** `Space Grotesk` — headlines only.
+- **Body / UI:** `Inter` — everything else.
+- Self-host both via `next/font` (no layout shift, no FOIT). Preload only weights actually used.
+
+### Type scale (fluid, clamp-based)
+```
+display-xl  clamp(3.5rem, 8vw, 7.5rem)   / line-height 0.95 / tracking -0.03em / weight 600
+display-l   clamp(2.5rem, 5vw, 4.5rem)   / line-height 1.0  / tracking -0.02em / weight 600
+h2          clamp(1.75rem, 3vw, 2.75rem) / line-height 1.1  / tracking -0.01em / weight 600
+h3          1.5rem  / line-height 1.2 / weight 600
+body-lg     1.125rem / line-height 1.6 / weight 400
+body        1rem    / line-height 1.6 / weight 400
+caption     0.875rem / line-height 1.4 / weight 500 / --text-2
+overline    0.75rem / tracking 0.16em / uppercase / weight 600 / --text-2
+```
+Rules: massive headlines, tight tracking on display, strong hierarchy, editorial rhythm. **Typography carries the design — not decorations.**
+
+## Spacing Scale (8pt base)
+`4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160` (px). Use generous section padding: `clamp(96px, 12vw, 160px)` vertical on desktop sections.
+
+## Grid & Layout
+- 12-column grid, max content width `1200px`, gutters `24px` (desktop) / `16px` (mobile).
+- Full-bleed allowed for the 3D Core and immersive scroll stages.
+- Asymmetry and editorial offsets encouraged over centered-everything.
+
+## Radii & Borders
+```
+--radius-sm: 8px;  --radius-md: 14px;  --radius-lg: 20px;  --radius-pill: 999px;
+--hairline: 1px solid rgb(255 255 255 / 0.08);
+```
+Borders are hairline and low-opacity. Cards rely on the `--surface` step + hairline, not on heavy shadows.
+
+## Elevation
+Dark UI: elevation = surface lightening + subtle inner hairline, not big drop shadows. Reserve a soft glow (`--primary`/`--accent` at low alpha) ONLY for the primary CTA and the 3D Core.
+
+## Iconography
+Thin, geometric, 1.5px stroke, monochrome (`--text` / `--text-2`). Lucide or a single consistent set. No emoji in UI, no multicolor icons.
+
+## Visual Don'ts
+No glassmorphism walls, no neon glow on every card, no gradient text everywhere, no decorative blobs. Restraint is the aesthetic.

@@ -1,0 +1,43 @@
+---
+description: Project north-star, objective, positioning, and hard constraints for the NeuralVarsity Agentic AI Masterclass landing page. The single source of truth for what this project is and is not.
+alwaysApply: true
+---
+
+# 01 — Project Charter
+
+## The One Job
+This is a **premium event-launch landing page** with exactly ONE purpose: **convert visitors into paid registrants** for the masterclass. Every pixel, word, and animation must increase **clarity, trust, or conversion**. If an element does none of these, delete it.
+
+## Event Facts (source of truth — never invent or alter)
+- **Event:** NeuralVarsity Agentic AI Masterclass
+- **Title:** Build Your First AI Employee
+- **Subtitle:** Learn how to build AI Agents that automate real business tasks without writing code.
+- **Date:** Sunday, June 7, 2026
+- **Time:** 2:00 PM – 5:00 PM (IST)
+- **Duration:** 3 Hours
+- **Price:** ₹109
+- **Mode:** Live Online Masterclass
+- **Primary CTA label:** `Reserve My Seat` (price-stamped variant: `Reserve My Seat for ₹109`)
+- **Secondary CTA label:** `Watch Demo`
+
+## Positioning — what this IS
+An **event launch experience**. Reference feeling: Apple product reveal, Tesla launch, F1 race reveal, OpenAI keynote. The visitor should feel: *"I need to reserve my seat immediately."*
+
+## Positioning — what this is NOT (forbidden framing)
+NOT an AI course site, LMS, coaching institute, educational portal, university, SaaS product, or generic startup landing page. Never use language, layout, or imagery from those categories.
+
+## Anti-AI-Slop Rules (hard bans)
+Never produce: generic SaaS layouts, feature-card spam, random bento grids, floating robots, futuristic cities, generic AI illustrations, excessive glassmorphism, random glowing cards, infinite particle backgrounds, "program galaxies", fake dashboards, fake screenshots, placeholder images, or stock photography. The site must never look AI-generated.
+
+## Truthfulness
+No fabricated statistics, fake logos, invented testimonials, or made-up credentials. Instructor authority must use real founder profile, real achievements, real projects. If a real asset is unavailable, leave a clearly marked `// TODO: real asset required` placeholder — never fabricate.
+
+## Definition of Done (page level)
+1. A first-time visitor understands the offer within 5 seconds.
+2. A CTA to register is always within reach (sticky on desktop, persistent on mobile).
+3. Lighthouse ≥ 95, LCP < 2.5s, INP < 200ms, CLS < 0.1, 60fps motion.
+4. Fully usable with keyboard, screen reader, reduced-motion, and no-WebGPU fallback.
+5. Reads like a launch event, not a template.
+
+## Decision Tie-Breaker
+When two options are equal on aesthetics, choose the one that converts better. When conversion is equal, choose the simpler, faster one.

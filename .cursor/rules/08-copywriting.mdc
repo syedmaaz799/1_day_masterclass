@@ -1,0 +1,46 @@
+---
+description: Copywriting rules and approved messaging for every section. Locks the voice, the exact hero/headline copy, and the conversion-first writing standards.
+alwaysApply: true
+---
+
+# 08 — Copywriting
+
+## Writing Standard
+Editorial, confident, technical-but-human (see 02-brand). Short declarative sentences. Lead with the outcome, follow with the mechanism. Cut adjectives that don't add information. Never sound AI-generated, never use hype-speak ("revolutionary", "unleash", "supercharge", "game-changer").
+
+## Locked Copy (use verbatim)
+- **Hero headline:** Build Your First AI Employee
+- **Hero subheadline:** Discover how to create AI Agents that generate leads, automate communication, and perform real business tasks without coding.
+- **Final CTA headline:** The Future Won't Hire Humans Who Compete With AI. It Will Hire Humans Who Build AI.
+- **Primary CTA:** Reserve My Seat  /  Reserve My Seat for ₹109
+- **Secondary CTA:** Watch Demo
+
+## Per-Section Messaging Intent
+- **Hero:** clarity in 5 seconds — what it is, when, how much, why now. Date/Time/Price/Seats/Countdown visible.
+- **AI Shift:** frame the timeline as inevitability (2023 ChatGPT → 2024 Assistants → 2025 Workflows → 2026 AI Employees). The reader should feel "I'm at the edge of this curve."
+- **What You'll Build:** concrete, verb-led outcomes ("Generate leads on autopilot", "Reply on Telegram for you", "Draft Gmail responses"). Each card names a real artifact the attendee leaves with.
+- **Live Workflow:** narrate the system as a story of one lead becoming revenue. Plain, technical, satisfying.
+- **Agenda:** promise-per-hour. Each hour states what they can DO by the end of it.
+- **Instructor:** real, specific, humble-confident. Achievements stated as facts, no superlatives.
+- **Testimonials:** let real voices speak; minimal framing copy.
+- **Registration:** restate value + price + urgency right at the form. Microcopy reduces anxiety ("Takes 30 seconds. Live link sent to your email.").
+- **FAQ:** answer the objection directly in the first sentence, then add reassurance.
+- **Final CTA:** emotional close + countdown + price + last chance.
+
+## Microcopy Library (tone reference)
+```
+Seats: "Limited seats. Live and interactive."
+Form helper: "We'll send your live access link to this email."
+Submit success: "You're in. Check your email for the live link."
+Countdown label: "Doors open in"
+Price line: "One session · 3 hours · ₹109"
+```
+
+## Numbers & Claims
+Only real numbers. No fabricated "10,000+ students", no fake ratings. If we lack a metric, sell the mechanism and outcome instead.
+
+## Formatting
+- Headlines: display case, no trailing punctuation except the locked final-CTA line.
+- Sentence case for body. Oxford comma on. `₹109` exact. Times in IST.
+- Avoid exclamation marks (max one across the whole page, if any).
+- No emoji in copy.

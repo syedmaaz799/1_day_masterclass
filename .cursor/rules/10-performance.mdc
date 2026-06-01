@@ -1,0 +1,46 @@
+---
+description: Performance budgets and tactics. Core Web Vitals targets, loading strategy, asset discipline, and the rules that keep the premium experience fast.
+alwaysApply: true
+---
+
+# 10 — Performance
+
+## Hard Targets (non-negotiable)
+- **Lighthouse ≥ 95** (Performance, mobile).
+- **LCP < 2.5s** — LCP element is hero TEXT, not 3D, not video.
+- **INP < 200ms** — keep the main thread free; defer/break up heavy JS.
+- **CLS < 0.1** — reserve space for hero, 3D canvas, images, video, sticky bars.
+- **60fps** animations (see 06-motion).
+
+## Loading Strategy
+- **Critical path = hero text + CTA + countdown.** These render fast and standalone.
+- **Lazy-load the 3D AI Core** (`next/dynamic`, `ssr:false`), gated by viewport + device tier. Never in the initial bundle.
+- Lazy-load below-the-fold sections, testimonial video (poster first, load on interaction/visibility), and any heavy lib.
+- Code-split GSAP/Lenis/3D so the hero TTI isn't penalized by motion/3D weight.
+
+## Asset Discipline
+- **Fonts:** self-host Space Grotesk + Inter via `next/font`; subset; preload only used weights; `font-display: swap` or size-adjust to kill CLS/FOIT.
+- **Images:** `next/image`, AVIF/WebP, correct sizes, lazy by default, explicit width/height. No stock photos (see brand). Instructor/testimonial assets compressed and graded.
+- **Video:** never autoplay heavy video; poster image + click/visibility to load; prefer streamed/hosted, not bundled.
+- **Icons:** tree-shaken individual imports, not whole icon packs.
+
+## JavaScript Budget
+- Initial client JS kept lean; the 3D chunk is separate and on-demand.
+- Prefer Server Components; ship interactivity only where needed.
+- No unnecessary client libraries; audit every dependency for size before adding.
+
+## 3D Performance (cross-ref 05-3d)
+- dpr cap `[1,2]`, device-tiered particle counts, pause loop offscreen/on blur, reduce on low-end and reduced-motion.
+- WebGPU-first with WebGL2 fallback and a static poster no-WebGL fallback.
+
+## Rendering & Caching
+- Static/ISR for the page shell; edge-cache static assets with long max-age + immutable hashing.
+- Stream server components; avoid blocking data fetches on the critical render.
+
+## Measurement & Guardrails
+- Wire `web-vitals` reporting (LCP/INP/CLS/TTFB) to analytics.
+- Treat a Lighthouse regression below 95, or any vital breaching budget, as a build blocker.
+- Test on mid-tier mobile + throttled network, not just desktop.
+
+## Performance Don'ts
+No render-blocking third-party scripts, no layout-shifting late content, no unoptimized images, no eager 3D, no giant client bundles, no animating layout properties.

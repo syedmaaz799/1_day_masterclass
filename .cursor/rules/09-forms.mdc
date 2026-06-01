@@ -1,0 +1,55 @@
+---
+description: Forms doctrine — registration form, sticky behavior, validation, payment hand-off, success state, and the post-registration feedback survey. Conversion-critical.
+globs: src/**/forms/**,src/components/sections/RegistrationSection*,src/components/sections/FeedbackSection*,src/lib/validation*
+alwaysApply: false
+---
+
+# 09 — Forms & Registration
+
+## Registration Form — Fields (exact)
+1. **Name** — text, required.
+2. **Email** — email, required (this is where the live link goes — say so).
+3. **Phone Number** — tel, required, with country handling (default +91 / IST audience).
+4. **College / Company** — text, required.
+5. **Experience Level** — select: `Beginner`, `Intermediate`, `Advanced` (or equivalent), required.
+
+No more than these five. No password, no account creation, no email confirmation gate before paying.
+
+## Layout & Behavior
+- Single column. Generous spacing. `--surface` fields with hairline borders, `--primary` focus ring.
+- **Desktop (≥1024px):** form is **sticky** (sticky/affixed within the registration area or a persistent side panel) so the ask stays visible while scrolling supporting content. Final CTA section also repeats the form.
+- **Mobile:** full-width stacked form + persistent bottom `Reserve My Seat for ₹109` bar that scrolls to/focuses the form.
+- CTA inside form: `Reserve My Seat for ₹109`. Price always visible at the button.
+
+## Validation (UX-first)
+- Inline, on blur + on submit. Friendly, specific messages ("Enter a valid email so we can send your link").
+- Never wipe entered data on error. Never gate fields behind each other.
+- Single source of truth schema (e.g. Zod) shared by client + server. Type-safe.
+- Accessible errors: `aria-invalid`, `aria-describedby` to the message, focus moves to first error.
+
+## Submission & Payment Hand-off
+- On submit: validate → create registration → hand off to payment for **₹109** (gateway integration is a later/config step; design the flow now).
+- Show a clear pending state on the button (no double-submit; disable + spinner + accessible status).
+- On success: route to / reveal the **success state** then the **Feedback survey**.
+- On failure: keep data, show a recoverable error, offer retry. Never lose the registrant.
+
+## Success State
+Premium, calm confirmation: "You're in. Check your email for the live link." Restate date/time. Then surface the feedback survey.
+
+## Post-Registration Feedback Survey (Section 11 / FeedbackSection)
+Shown only AFTER successful registration. Questions:
+1. How did you hear about us?
+2. What are you hoping to learn?
+3. Current role?
+4. AI experience level?
+5. Biggest challenge with AI?
+
+- Make it feel like a premium continuation, not a chore. Optional-to-skip but encouraged.
+- **Store responses** for future marketing insights (persist to backend/store; design the contract now, wire later).
+
+## Privacy & Data
+- Collect only what's listed. Clear consent microcopy near submit. No selling data, no dark patterns.
+- Never log PII to analytics events; analytics tracks the *event*, not the field values.
+
+## Form Don'ts
+No multi-step wizard for 5 fields, no captcha unless abuse is proven, no required fields beyond the five, no resetting on error, no hidden costs surfaced at payment.

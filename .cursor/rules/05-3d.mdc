@@ -1,0 +1,52 @@
+---
+description: 3D experience doctrine — the single AI Core object, the scroll-driven narrative, WebGPU-first rendering, fallbacks, and performance budget for the 3D scene.
+globs: src/**/three/**,src/**/three/**/*,src/**/*.three.*,src/**/r3f/**,src/**/canvas/**,src/components/3d/**
+alwaysApply: false
+---
+
+# 05 — 3D Strategy
+
+## The One-Object Law
+The site has **exactly ONE major 3D experience**: the **AI Core**. No second scene, no decorative 3D, no scattered objects, no floating robots. If a 3D idea isn't the AI Core telling the story, it does not ship.
+
+## The AI Core
+A floating **neural sphere** that feels *alive, not decorative*:
+- Interconnected nodes (graph of points on/inside a sphere).
+- Flowing data particles traveling along edges.
+- Dynamic energy streams / pulses.
+- Subtle "intelligence" motion — slow breathing, never frantic.
+
+## Scroll Story — one object, one continuous transformation
+The Core morphs through 7 stages as the user scrolls. **No scene changes, no new objects** — only the same Core transforming:
+```
+1 Question  → 2 AI Agent → 3 Workflow → 4 Telegram → 5 Gmail → 6 Lead → 7 Revenue
+```
+Each stage is a parameterized state of the SAME mesh/particle system (node density, edge routing, color energy, emissive intensity, particle flow direction). Transitions are interpolated and tied to scroll progress.
+
+## Rendering — WebGPU-first
+- Default to **WebGPURenderer** (Three.js / TSL). Detect support at runtime.
+- **WebGL2 fallback** is mandatory and visually equivalent (acceptable to reduce particle count / drop post-processing).
+- **No-WebGL fallback:** render a high-quality static poster image / CSS treatment of the Core so the page never breaks. The narrative must remain legible via text + the static visual.
+
+## Tech
+React Three Fiber + Three.js. Prefer TSL (node materials) for WebGPU; keep a GLSL/standard-material path for WebGL2. Use `drei` sparingly (no kitchen-sink helpers that bloat the bundle).
+
+## Performance Budget (hard limits)
+- 3D bundle (lazy chunk) ≤ ~250KB gzip target; never block first paint.
+- Maintain **60fps** on a modern laptop; ≥ 30fps acceptable floor on mid mobile (auto-degrade).
+- Cap `dpr` at `[1, 2]`; throttle to 1 on low-end / when `prefers-reduced-motion`.
+- Pause/freeze the render loop when the canvas is offscreen (IntersectionObserver) and on tab blur.
+- Particle counts are tiered by device class (high / mid / low) — define a single `getDeviceTier()` source of truth.
+
+## Loading Strategy
+- The Core is **lazy-loaded** and never part of the initial critical bundle.
+- Reserve hero layout space to avoid CLS; show a lightweight poster/skeleton until the scene is ready.
+- LCP element must be hero TEXT, not the 3D canvas.
+
+## Accessibility & Motion
+- Honor `prefers-reduced-motion`: freeze the transformation to a tasteful static state, disable continuous particle flow.
+- The 3D is decorative-supportive; all story meaning is ALSO conveyed in text/section copy (never 3D-only).
+- Canvas is `aria-hidden` with the narrative available to AT via real DOM content.
+
+## 3D Don'ts
+No infinite particle fog, no bloom-overload, no neon city, no orbit-controls free camera (camera is scroll-directed), no second canvas, no physics libs unless justified.

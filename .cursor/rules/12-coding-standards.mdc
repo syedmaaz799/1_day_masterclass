@@ -1,0 +1,53 @@
+---
+description: Engineering standards — stack versions, TypeScript, Next.js App Router conventions, Tailwind v4 usage, file structure, state, and quality gates.
+globs: src/**/*.ts,src/**/*.tsx,*.ts,*.tsx
+alwaysApply: false
+---
+
+# 12 — Coding Standards
+
+## Stack (pin to these)
+Next.js 16+ (App Router) · React 19 · TypeScript (strict) · Tailwind CSS v4 · GSAP + ScrollTrigger · Framer Motion · Lenis · React Three Fiber + Three.js (WebGPU-first) · Vercel deploy.
+
+## TypeScript
+- `strict: true`. No `any` (use `unknown` + narrowing). No non-null `!` unless provably safe.
+- Explicit prop and return types on exported components/functions. Prefer `type` for props.
+- Validate external/runtime data with a schema (Zod) — never trust unchecked input.
+
+## Next.js / React
+- **Server Components by default.** `"use client"` only at the smallest necessary leaf (motion, 3D, form interaction).
+- Use the App Router conventions: `app/layout.tsx`, route `page.tsx`, `loading.tsx`, `error.tsx`, `metadata` exports for SEO/OG.
+- Data/event facts live in `src/content/` as typed modules — single source for date/time/price/copy.
+- No `useEffect` for things derivable in render; effects only for real side effects (subscriptions, ScrollTrigger setup/teardown).
+- Clean up: kill ScrollTriggers, dispose Three resources, remove listeners on unmount.
+
+## Tailwind v4
+- Theme tokens (colors, spacing, fonts, radii from 03-design-system) defined via the v4 CSS-first config (`@theme`); reference tokens, don't hardcode hexes in markup.
+- Compose with utilities; extract to a component when a class string repeats or grows unwieldy. Use `clsx`/`cn` helper for conditional classes.
+- No inline magic numbers when a token exists. Mobile-first responsive utilities.
+
+## Structure & Naming
+- Folders per 07-components. Components `PascalCase.tsx`, hooks `useThing.ts`, utils `camelCase.ts`, content `kebab-or-camel` typed modules.
+- One component per file (plus its local subparts). Co-locate tests (`*.test.ts(x)`).
+- Barrel files only where they don't hurt tree-shaking.
+
+## State & Data
+- Local state local. Lift only when shared. Use context for event data + analytics, not a heavy global store unless justified.
+- Forms: controlled with shared Zod schema; server action / API route for submission.
+
+## Quality Gates
+- ESLint + Prettier clean; no warnings in committed code.
+- Run `ReadLints`/typecheck after substantive edits and fix introduced errors.
+- No dead code, no commented-out blocks, no `console.log` in committed code (use a typed logger/analytics).
+- Accessibility and performance budgets (11, 10) are part of "done", not afterthoughts.
+
+## Comments
+- Comment intent/trade-offs/constraints only — never narrate what the code obviously does.
+- Mark unavoidable placeholders explicitly: `// TODO: real asset/credential required`.
+
+## Dependencies
+- Audit bundle cost before adding any library (cross-ref 10-performance). Prefer the platform and the already-chosen stack over new deps.
+- Pin versions; no surprise majors.
+
+## Git Hygiene
+- Small, focused commits with clear messages. Never commit secrets/.env. Only commit when asked.
