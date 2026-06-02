@@ -1,0 +1,31 @@
+/* Active node glow — desktop only (lighter on mobile for perf + clarity). */
+@media (min-width: 1024px) {
+  .workflow-node--active {
+    box-shadow: 0 0 24px rgb(79 124 255 / 0.22);
+  }
+}
+
+@media (max-width: 1023px) {
+  .workflow-node--active {
+    box-shadow: 0 0 12px rgb(79 124 255 / 0.18);
+  }
+
+  [data-workflow-edge] [data-edge-track] {
+    opacity: 1 !important;
+  }
+}
+
+/* Explanation panel: scroll inside pin when copy is long (scrollbar hidden) */
+.workflow-explanation-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.workflow-explanation-scroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}

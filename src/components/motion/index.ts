@@ -3,5 +3,6 @@ export { Reveal } from "@/components/motion/Reveal";
 export { RevealGroup } from "@/components/motion/RevealGroup";
 export { ScrollStory, StoryStage, useStoryProgress } from "@/components/motion/ScrollStory";
 export { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced-motion";
+export { useMediaQuery, useIsLgUp } from "@/components/motion/use-media-query";
 export { useIsomorphicLayoutEffect } from "@/components/motion/use-isomorphic-layout-effect";
 export { gsap, ScrollTrigger } from "@/components/motion/gsap";

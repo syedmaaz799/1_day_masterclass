@@ -4,7 +4,12 @@
 export { event, type EventData } from "@/content/event";
 export { agenda, type AgendaHour } from "@/content/agenda";
 export { whatYouBuild, type BuildItem } from "@/content/what-you-build";
-export { workflow, type WorkflowStep } from "@/content/workflow";
+export {
+  workflowDemoSection,
+  workflowNodes,
+  workflowComplete,
+  type WorkflowNode,
+} from "@/content/workflow-demo";
 export { automationTasks, type AutomationTask } from "@/content/ai-shift";
 export { faq, type FaqItem } from "@/content/faq";
 export {

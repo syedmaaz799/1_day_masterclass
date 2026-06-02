@@ -34,6 +34,10 @@ const DEFAULT_TINT = "#36e1ff"; // site accent — used outside the company rang
 const N = aiCompanies.length; // 10
 const TOTAL_STAGES = N + 4; // intro + 10 + ensemble + payoff + cta = 14
 
+/** Pin below fixed nav; use dvh so mobile browser chrome does not clip content. */
+const AI_COMPANIES_STICKY =
+  "sticky top-[var(--nav-h)] z-10 h-[calc(100dvh-var(--nav-h))] max-h-[calc(100dvh-var(--nav-h))] overflow-hidden bg-bg";
+
 function handleReserve() {
   scrollToRegister("ai-companies");
 }
@@ -48,7 +52,11 @@ export function AICompaniesStory() {
   const nameRef = useRef<HTMLSpanElement>(null);
 
   return (
-    <ScrollStory stageCount={TOTAL_STAGES} stageVh={STAGE_VH}>
+    <ScrollStory
+      stageCount={TOTAL_STAGES}
+      stageVh={STAGE_VH}
+      stickyClassName={AI_COMPANIES_STICKY}
+    >
       {/* Persistent background intelligence — the AI Core, zoomed out, tinting to the
           active company so the ecosystem visibly evolves as you move through it. */}
       <div
@@ -79,7 +87,10 @@ export function AICompaniesStory() {
       />
 
       {/* Chapter 1 — the opening statement */}
-      <StoryStage index={0} className="z-10 justify-center">
+      <StoryStage
+        index={0}
+        className="z-10 items-center justify-center px-4 py-6 sm:py-8"
+      >
         <Container className="relative">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-7 text-center">
             <Eyebrow tone="accent" withRule>
@@ -98,7 +109,11 @@ export function AICompaniesStory() {
 
       {/* Chapters 2–11 — one hero company at a time */}
       {aiCompanies.map((company, i) => (
-        <StoryStage key={company.id} index={i + 1} className="z-10">
+        <StoryStage
+          key={company.id}
+          index={i + 1}
+          className="z-10 items-center justify-center overflow-y-auto overscroll-contain px-4 py-6 lg:overflow-visible lg:py-0"
+        >
           <div
             ref={(el) => {
               chapterRefs.current[i] = el;
@@ -112,7 +127,14 @@ export function AICompaniesStory() {
       ))}
 
       {/* Chapter 12 — the ensemble: one ecosystem */}
-      <StoryStage index={N + 1} className="z-10 justify-center">
+      <StoryStage
+        index={N + 1}
+        className={cn(
+          "z-10 items-start justify-start overflow-y-auto overscroll-contain",
+          "px-4 pt-2 pb-[max(1.25rem,env(safe-area-inset-bottom))]",
+          "lg:items-center lg:justify-center lg:overflow-visible lg:px-0 lg:py-0",
+        )}
+      >
         <EnsembleChapter />
       </StoryStage>
 
@@ -305,33 +327,38 @@ function CompanyChapter({ company, position }: { company: AICompany; position: n
 
 function EnsembleChapter() {
   return (
-    <Container className="relative">
-      <div className="flex flex-col gap-12">
-        <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
+    <Container className="relative w-full">
+      <div className="flex flex-col gap-6 sm:gap-10 lg:gap-12">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center sm:gap-4">
           <Eyebrow tone="accent" withRule>
             One ecosystem
           </Eyebrow>
-          <Headline size="h2">Together, they are shaping the future of AI.</Headline>
+          <Headline
+            size="h2"
+            className="text-balance text-[clamp(1.25rem,5vw,2.75rem)] leading-tight"
+          >
+            Together, they are shaping the future of AI.
+          </Headline>
         </div>
-        <ul className="grid grid-cols-2 items-start gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+        <ul className="grid grid-cols-2 items-start gap-x-5 gap-y-6 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-8 lg:grid-cols-5 lg:gap-y-10">
           {aiCompanies.map((company) => (
-            <li key={company.id} className="flex flex-col items-center gap-3 text-center">
+            <li key={company.id} className="flex flex-col items-center gap-2 text-center sm:gap-3">
               {/* Uniform logo tile so every cell is the same height and names always
                   align: official mark where we have one, brand-colour monogram otherwise. */}
-              <span className="grid size-14 place-items-center rounded-xl border border-white/10 bg-white/[0.04] p-2">
+              <span className="grid size-12 place-items-center rounded-xl border border-white/10 bg-white/[0.04] p-2 sm:size-14">
                 <BrandMark
                   id={company.id}
                   color={company.color}
                   static
                   className={cn(
-                    "h-8 w-8",
-                    company.id === "groq" && "h-8 w-8",
-                    company.id === "google" && "h-8 w-8",
+                    "h-7 w-7 sm:h-8 sm:w-8",
+                    company.id === "groq" && "h-7 w-7 sm:h-8 sm:w-8",
+                    company.id === "google" && "h-7 w-7 sm:h-8 sm:w-8",
                   )}
                 />
               </span>
               <span
-                className="font-display text-body-lg font-semibold"
+                className="font-display text-sm font-semibold sm:text-body-lg"
                 style={{ color: company.color }}
               >
                 {company.name}

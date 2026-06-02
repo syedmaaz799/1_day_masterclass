@@ -1,5 +1,5 @@
 /**
- * "What You Will Build" deliverables (Section 3).
+ * "What you will see" deliverables (Section 3).
  * Concrete, verb-led outcomes — each names a real artifact the attendee leaves with (08-copywriting).
  */
 

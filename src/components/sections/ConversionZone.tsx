@@ -5,7 +5,7 @@ import { trackScrollDepthMilestone } from "@/lib/conversion-scroll";
 import { MobileRegistrationBar } from "@/components/sections/MobileRegistrationBar";
 /**
  * ConversionZone — client shell for conversion-only behaviors: scroll-depth milestones
- * and the mobile sticky CTA. Wraps Registration → Testimonials → FAQ → Final CTA.
+ * and the mobile sticky CTA. Wraps Feedback → Testimonials → FAQ → Final CTA.
  */
 export function ConversionZone({ children }: { children: React.ReactNode }) {
   useEffect(() => {

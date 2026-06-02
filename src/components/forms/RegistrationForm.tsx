@@ -27,7 +27,7 @@ type RegistrationFormProps = {
   formId?: string;
   className?: string;
   /** Analytics source label (no PII). */
-  source: "registration";
+  source: "hero" | "registration";
 };
 
 export function RegistrationForm({ formId = "register", className, source }: RegistrationFormProps) {

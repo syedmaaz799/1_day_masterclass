@@ -28,7 +28,7 @@ export function RegistrationFormCard() {
 
       <RegistrationTicketSummary />
 
-      <RegistrationForm formId="register-main" source="registration" />
+      <RegistrationForm formId="register-main" source="hero" />
     </aside>
   );
 }

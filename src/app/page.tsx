@@ -6,8 +6,9 @@ import { WhatYouBuildSection } from "@/components/sections/WhatYouBuildSection";
 import { LiveWorkflowSection } from "@/components/sections/LiveWorkflowSection";
 import { AgendaSection } from "@/components/sections/AgendaSection";
 import { AICompaniesSection } from "@/components/sections/AICompaniesSection";
+import { HeroRegistrationSection } from "@/components/sections/HeroRegistrationSection";
 import { ConversionZone } from "@/components/sections/ConversionZone";
-import { RegistrationSection } from "@/components/sections/RegistrationSection";
+import { FeedbackSection } from "@/components/sections/FeedbackSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
@@ -24,6 +25,7 @@ export default function Home() {
       <main>
         <StoryZone>
           <HeroSection />
+          <HeroRegistrationSection />
           <AIShiftSection />
           <WhatYouBuildSection />
           <LiveWorkflowSection />
@@ -31,7 +33,7 @@ export default function Home() {
         </StoryZone>
         <AICompaniesSection />
         <ConversionZone>
-          <RegistrationSection />
+          <FeedbackSection />
           <TestimonialsSection />
           <FAQSection />
           <FinalCTASection />

@@ -5,7 +5,7 @@ import { event } from "@/content/event";
 import { registrationBenefits } from "@/content/registration";
 
 type RegistrationValueColumnProps = {
-  /** When false, heading is provided by RegistrationSection header. */
+  /** When false, heading is provided by HeroRegistrationSection header. */
   showHeader?: boolean;
 };
 

@@ -86,14 +86,32 @@ type ScrollStoryProps = {
   stageVh?: number;
   /** Optional marker for imperative scroll targets (e.g. Watch Demo). */
   scrollStoryTrack?: string;
+  /** Optional id on the tall scroll track element (e.g. workflow demo anchor). */
+  trackId?: string;
+  /** When true, pinned content is visible immediately (no entry fade-in). */
+  skipEntryFade?: boolean;
+  /** Override classes on the pinned viewport (e.g. mobile nav offset + scroll). */
+  stickyClassName?: string;
+  /** When false, content flows naturally (no 100svh clip). Used for mobile workflow. */
+  pin?: boolean;
   className?: string;
   children: ReactNode;
 };
+
+const MOBILE_STICKY =
+  "sticky top-[var(--nav-h)] z-10 overflow-visible bg-bg/95 py-3 backdrop-blur-sm";
+
+const DEFAULT_STICKY =
+  "sticky top-0 z-10 h-[100svh] max-h-[100svh] overflow-hidden";
 
 export function ScrollStory({
   stageCount,
   stageVh = 100,
   scrollStoryTrack,
+  trackId,
+  skipEntryFade = false,
+  stickyClassName = DEFAULT_STICKY,
+  pin = true,
   className,
   children,
 }: ScrollStoryProps) {
@@ -167,32 +185,37 @@ export function ScrollStory({
         onUpdate: () => apply(proxy.value),
       });
 
-      // Entry gate: keep the pinned content hidden until the story actually OWNS the
-      // screen (start: "top top" = the previous section has fully scrolled off), then
-      // fade + rise it in. Prevents the incoming headline from colliding with the
-      // outgoing hero/section during the hand-off frame.
       const sticky = stickyRef.current;
-      if (sticky) {
-        gsap.fromTo(
-          sticky,
-          { opacity: 0, y: 36 },
-          {
-            opacity: 1,
-            y: 0,
-            ease: "power1.out",
-            scrollTrigger: {
-              trigger: track,
-              start: "top top",
-              end: () => "+=" + window.innerHeight * 0.4,
-              scrub: true,
+      if (sticky && pin) {
+        if (skipEntryFade) {
+          gsap.set(sticky, { opacity: 1, y: 0 });
+        } else {
+          // Entry gate: fade in once the track owns the viewport (hand-off from prior section).
+          gsap.fromTo(
+            sticky,
+            { opacity: 0, y: 36 },
+            {
+              opacity: 1,
+              y: 0,
+              ease: "power1.out",
+              scrollTrigger: {
+                trigger: track,
+                start: "top top",
+                end: () => "+=" + window.innerHeight * 0.4,
+                scrub: true,
+              },
             },
-          },
-        );
+          );
+        }
       }
     }, trackRef);
 
+    if (!pin && stickyRef.current) {
+      gsap.set(stickyRef.current, { opacity: 1, y: 0 });
+    }
+
     return () => ctx.revert();
-  }, [reduced, stageCount]);
+  }, [reduced, stageCount, skipEntryFade, pin]);
 
   if (reduced) {
     return (
@@ -206,13 +229,25 @@ export function ScrollStory({
     <StoryContext.Provider value={{ register, subscribe, reduced }}>
       <div
         ref={trackRef}
+        id={trackId}
         className={cn("relative", className)}
         style={{ height: `${stageCount * stageVh}svh` }}
         {...(scrollStoryTrack
           ? { "data-scroll-story-track": scrollStoryTrack }
           : {})}
       >
-        <div ref={stickyRef} className="sticky top-0 h-[100svh] overflow-hidden">
+        <div
+          ref={stickyRef}
+          className={
+            pin
+              ? stickyClassName === DEFAULT_STICKY
+                ? DEFAULT_STICKY
+                : stickyClassName
+              : stickyClassName !== DEFAULT_STICKY
+                ? stickyClassName
+                : MOBILE_STICKY
+          }
+        >
           {children}
         </div>
       </div>

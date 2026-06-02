@@ -10,7 +10,7 @@ export function AICompaniesSection() {
     <section
       id="ai-companies"
       aria-label="The companies building the AI future"
-      className="relative z-10 bg-bg"
+      className="relative z-10 scroll-mt-[var(--nav-h)] bg-bg"
     >
       <AICompaniesStory />
     </section>

@@ -138,6 +138,7 @@
 
   /* In-page anchor targets — flush below fixed nav */
   #register-experience,
+  #feedback-experience,
   #demo {
     scroll-margin-top: var(--nav-h);
   }

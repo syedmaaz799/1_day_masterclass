@@ -11,6 +11,31 @@ function getNavOffsetPx(): number {
 }
 
 /**
+ * Align the workflow scroll track to the top of the viewport so step 1 is visible.
+ * Used after "Generate Workflow" and when the track already exists.
+ */
+export function scrollToWorkflowTrack(duration = 0.85): void {
+  const track =
+    document.getElementById("workflow-demo-track") ??
+    document.querySelector<HTMLElement>("[data-scroll-story-track='workflow']");
+  if (!track) return;
+
+  const offset = -getNavOffsetPx();
+  const top = track.getBoundingClientRect().top + window.scrollY;
+  const lenis = getLenis();
+
+  if (lenis) {
+    lenis.scrollTo(top, { offset, duration, lock: true, force: true });
+    return;
+  }
+
+  window.scrollTo({
+    top: Math.max(0, top + offset),
+    behavior: duration > 0 ? "smooth" : "auto",
+  });
+}
+
+/**
  * Scroll to the live workflow demo with content visible immediately.
  * 1. Prefer the pinned track position (past ScrollStory entry fade + stage 0).
  * 2. Fall back to #demo intro (always has copy + step 1 preview).
@@ -20,18 +45,15 @@ export function scrollToDemo(source: string): void {
   const offset = -getNavOffsetPx();
   const lenis = getLenis();
 
-  const storyTrack = document.querySelector<HTMLElement>(
-    "[data-scroll-story-track='workflow']",
-  );
+  const storyTrack =
+    document.getElementById("workflow-demo-track") ??
+    document.querySelector<HTMLElement>("[data-scroll-story-track='workflow']");
   const intro = document.getElementById("demo");
 
   let target: HTMLElement | number | null = null;
 
   if (storyTrack) {
-    const trackTop = storyTrack.getBoundingClientRect().top + window.scrollY;
-    // Clear ScrollStory sticky entry fade (~40% viewport) so step 1 is readable.
-    const entryClearance = window.innerHeight * 0.22;
-    target = trackTop + entryClearance;
+    target = storyTrack.getBoundingClientRect().top + window.scrollY;
   } else if (intro) {
     target = intro;
   }

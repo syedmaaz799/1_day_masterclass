@@ -16,7 +16,7 @@ export const registrationBenefits = [
 export const whyAttend = {
   eyebrow: "Reserve your seat",
   title: "Three hours. One working agent. ₹109.",
-  body: "You've seen what the ecosystem looks like. This session is where you build your first AI employee — live, no coding required.",
+  body: "Reserve your seat for three hours of live building. Leave with a working AI employee — no coding required.",
 } as const;
 
 /** Compact ticket lines above the form (Issue 6). */
