@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useId, useRef, useState } from "react";
-import { Button, Input, Select } from "@/components/ui";
+import { Button, EventPrice, Input, Select } from "@/components/ui";
 import {
   experienceLevels,
   fieldErrors,
@@ -210,7 +210,14 @@ export function RegistrationForm({ formId = "register", className, source }: Reg
       ) : null}
 
       <Button type="submit" size="lg" fullWidth loading={status === "submitting"}>
-        {status === "submitting" ? formMicrocopy.pending : formMicrocopy.submit}
+        {status === "submitting" ? (
+          formMicrocopy.pending
+        ) : (
+          <span className="inline-flex flex-wrap items-center justify-center gap-x-1.5">
+            {formMicrocopy.submitPrefix}
+            <EventPrice size="sm" />
+          </span>
+        )}
       </Button>
     </form>
   );

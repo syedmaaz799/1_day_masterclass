@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui";
+import { Button, EventPrice } from "@/components/ui";
 import { event } from "@/content/event";
 import { scrollToRegister } from "@/lib/scroll-to-register";
 import { cn } from "@/lib/utils";
@@ -46,7 +46,11 @@ export function TopNav() {
 
         <div className="flex items-center gap-4">
           <span className="hidden font-sans text-caption text-text-2 sm:inline">
-            {`${event.mode} · ₹${event.priceInINR}`}
+            <span className="inline-flex flex-wrap items-center justify-end gap-x-2 gap-y-1">
+              <span>{event.mode}</span>
+              <span aria-hidden>·</span>
+              <EventPrice size="sm" />
+            </span>
           </span>
           <Button size="sm" onClick={reserve}>
             {event.cta.primary}

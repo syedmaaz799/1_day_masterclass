@@ -1,33 +1,10 @@
 import type { ReactNode } from "react";
 import { ConversionSectionScrim } from "@/components/background/ConversionSectionScrim";
-import { Container, Caption } from "@/components/ui";
+import { Container, Caption, EventPrice } from "@/components/ui";
 import { FooterDemoLink } from "@/components/sections/FooterDemoLink";
 import { event } from "@/content/event";
 import { footer } from "@/content/footer";
 import { cn } from "@/lib/utils";
-
-const TZ = event.timezone;
-
-function formatEventDate(date: Date): string {
-  return new Intl.DateTimeFormat("en-IN", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: TZ,
-  }).format(date);
-}
-
-function formatTimeRange(start: Date, end: Date): string {
-  const time = (d: Date) =>
-    new Intl.DateTimeFormat("en-IN", {
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true,
-      timeZone: TZ,
-    }).format(d);
-  return `${time(start)} – ${time(end)} ${event.timezoneLabel}`;
-}
 
 const linkClass = cn(
   "inline-block font-sans text-body text-text-2 transition-opacity duration-200",
@@ -78,10 +55,12 @@ export function FooterSection() {
               {event.title}
             </p>
             <ul className="mt-6 flex flex-col gap-2 font-sans text-body text-text-2">
-              <li>{formatEventDate(event.startsAt)}</li>
-              <li>{formatTimeRange(event.startsAt, event.endsAt)}</li>
+              <li>{event.schedule.footerDate}</li>
+              <li>{event.schedule.footerTime}</li>
               <li>{event.mode}</li>
-              <li className="text-text">{`₹${event.priceInINR}`}</li>
+              <li className="text-text">
+                <EventPrice size="sm" />
+              </li>
             </ul>
           </div>
 

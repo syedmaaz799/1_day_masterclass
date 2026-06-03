@@ -31,13 +31,13 @@ export const faq: readonly FaqItem[] = [
     id: "recording",
     question: "Will there be a recording?",
     answer:
-      "This is a live, interactive session. Attend live to ask questions and build alongside the instructor.",
+      "This is a live, interactive two-day masterclass. Attend both sessions to ask questions and build alongside the instructor.",
   },
   {
     id: "joining-details",
     question: "How will I receive joining details?",
     answer:
-      "Immediately after registration. We'll email your live access link to the address you provide — keep it handy for session day.",
+      "Immediately after registration. We'll email your live access link to the address you provide — keep it handy for both session days.",
   },
   {
     id: "tools",
@@ -49,12 +49,30 @@ export const faq: readonly FaqItem[] = [
     id: "payment",
     question: "How do I make payment?",
     answer:
-      "After you submit this form, you'll complete secure checkout for ₹109. Payment confirmation is required to reserve your seat.",
+      "After you submit this form, you'll complete secure checkout for ₹111 (₹15,000 value). Payment confirmation is required to reserve your seat.",
+  },
+  {
+    id: "refund",
+    question: "What is your refund policy?",
+    answer:
+      "If you could not attend the masterclass or felt you did not understand what was covered, contact us after the sessions and we will issue a refund. Email the address in the footer with your registration details and we will take it from there.",
   },
   {
     id: "after-register",
     question: "What happens after registration?",
     answer:
-      "You'll receive a confirmation email with your live link. Show up on time with your laptop — you'll leave with a deployed agent connected to real tools.",
+      "You'll receive a confirmation email with your live link. Show up on time Saturday and Sunday with your laptop — you'll leave with a deployed agent connected to real tools.",
+  },
+  {
+    id: "certificate",
+    question: "Will I get a certificate?",
+    answer:
+      "Yes. Everyone who completes the two-day masterclass receives a certificate of completion — a shareable proof you built with agentic AI.",
+  },
+  {
+    id: "career-roadmap",
+    question: "What is the free career roadmap?",
+    answer:
+      "After the masterclass, you get a personalized career roadmap at no extra cost — clear next steps for skills, projects, and roles in the AI economy.",
   },
 ] as const;

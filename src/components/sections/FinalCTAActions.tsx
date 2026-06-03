@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui";
+import { Button, EventPrice } from "@/components/ui";
 import { finalCta } from "@/content/registration";
 import { scrollToRegister } from "@/lib/scroll-to-register";
 
@@ -12,7 +12,10 @@ export function FinalCTAActions() {
       className="min-h-12 min-w-[min(100%,20rem)] px-10"
       onClick={() => scrollToRegister("final-cta")}
     >
-      {finalCta.ctaLabel}
+      <span className="inline-flex flex-wrap items-center justify-center gap-x-1.5">
+        {finalCta.ctaLabelPrefix}
+        <EventPrice size="sm" />
+      </span>
     </Button>
   );
 }

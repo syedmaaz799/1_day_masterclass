@@ -1,5 +1,13 @@
 import { ConversionSectionScrim } from "@/components/background/ConversionSectionScrim";
-import { Container, Display, Body, Eyebrow, CountdownTimer, SeatCounter } from "@/components/ui";
+import {
+  Container,
+  Display,
+  Body,
+  Eyebrow,
+  CountdownTimer,
+  SeatCounter,
+  EventPrice,
+} from "@/components/ui";
 import { FinalCTAActions } from "@/components/sections/FinalCTAActions";
 import { event } from "@/content/event";
 import { finalCta } from "@/content/registration";
@@ -37,7 +45,7 @@ export function FinalCTASection() {
               <CountdownTimer
                 target={event.startsAt}
                 size="lg"
-                ariaLabel="Time remaining until the masterclass begins"
+                ariaLabel={event.schedule.countdownAriaLabel}
                 className="w-full justify-center"
               />
             </div>
@@ -46,11 +54,10 @@ export function FinalCTASection() {
               total={event.seatsTotal}
               className="w-full"
             />
-            <p className="font-display text-h3 text-text">
-              {`₹${event.priceInINR}`}
+            <p className="flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 font-display text-h3 text-text">
+              <EventPrice size="lg" />
               <span className="font-sans text-body text-text-2">
-                {" "}
-                · one live session · 3 hours
+                {event.schedule.finalCtaPriceSuffix}
               </span>
             </p>
           </div>

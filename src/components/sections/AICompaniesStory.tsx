@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type RefObject } from "react";
-import { Container, Display, Headline, Body, Eyebrow, Button } from "@/components/ui";
+import { Container, Display, Headline, Body, Eyebrow, Button, EventPrice } from "@/components/ui";
 import { ScrollStory, StoryStage, useStoryProgress, usePrefersReducedMotion } from "@/components/motion";
 import { EventMeta } from "@/components/sections/EventMeta";
 import { BrandMark } from "@/components/sections/BrandLogos";
@@ -166,7 +166,10 @@ export function AICompaniesStory() {
             </Display>
             <EventMeta className="justify-center" />
             <Button size="lg" onClick={handleReserve}>
-              {event.cta.primaryWithPrice}
+              <span className="inline-flex flex-wrap items-center justify-center gap-x-1.5">
+                {event.cta.primaryWithPrice}
+                <EventPrice size="sm" />
+              </span>
             </Button>
           </div>
         </Container>

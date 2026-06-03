@@ -56,11 +56,7 @@ export function HeroSection() {
         >
           <motion.div variants={item}>
             <Eyebrow tone="accent" withRule>
-              {`${event.mode} · ${new Intl.DateTimeFormat("en-IN", {
-                day: "numeric",
-                month: "long",
-                timeZone: event.timezone,
-              }).format(event.startsAt)}`}
+              {event.schedule.heroEyebrow}
             </Eyebrow>
           </motion.div>
 
@@ -95,7 +91,11 @@ export function HeroSection() {
               <span className="font-sans text-overline uppercase text-text-2">
                 Doors open in
               </span>
-              <CountdownTimer target={event.startsAt} size="lg" ariaLabel="Time remaining until the masterclass begins" />
+              <CountdownTimer
+                target={event.startsAt}
+                size="lg"
+                ariaLabel={event.schedule.countdownAriaLabel}
+              />
             </div>
             <SeatCounter
               remaining={event.seatsRemaining}

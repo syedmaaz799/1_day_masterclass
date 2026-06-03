@@ -11,7 +11,7 @@ function getNavOffsetPx(): number {
 }
 
 /**
- * Align the workflow scroll track so step 1 is visible (after Generate Workflow).
+ * Align the workflow scroll track so step 1 is visible (after Build).
  */
 export function scrollToWorkflowTrack(duration = 0.85): void {
   const track =

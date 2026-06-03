@@ -7,11 +7,11 @@ All user-facing copy from the current site, grouped by section in page order. No
 - Series: Agentic AI Masterclass  
 - Title: Build Your First AI Employee  
 - Subtitle: Learn how to build AI Agents that automate real business tasks without writing code.  
-- Date: Sunday, 7 June 2026  
-- Time: 2:00 PM – 5:00 PM IST  
-- Duration: 3 hours  
+- Dates: Saturday 13 & Sunday 14 June 2026  
+- Time: 2:00 PM – 5:00 PM IST each day  
+- Duration: 6 hours (3 hours per day · 2 live sessions)  
 - Mode: Live Online Masterclass  
-- Price: ₹109  
+- Price: ~~₹15,000~~ **₹111**  
 - Seats remaining: 137 of 500  
 
 ---
@@ -19,17 +19,17 @@ All user-facing copy from the current site, grouped by section in page order. No
 ## Global — Top navigation
 
 - Wordmark: NeuralVarsity.
-- Tagline (desktop): Live Online Masterclass · ₹109
+- Tagline (desktop): Live Online Masterclass · ~~₹15,000~~ ₹111
 - Button: Reserve My Seat
 
 ---
 
 ## Hero
 
-- Eyebrow: Live Online Masterclass · [event date, e.g. 7 Jun 2026]
+- Eyebrow: Live Online Masterclass · 13–14 Jun 2026
 - Headline: Build Your First AI Employee
 - Subheadline: Discover how to create AI Agents that generate leads, automate communication, and perform real business tasks without coding.
-- Event meta pills: [formatted date] · [formatted time range] IST · Live Online Masterclass · ₹109
+- Event meta pills: Sat 13 & Sun 14 Jun 2026 · 2:00 PM – 5:00 PM IST · Sat & Sun · Live Online Masterclass · ~~₹15,000~~ ₹111
 - Primary button: Reserve My Seat
 - Secondary button: Watch Demo
 - Countdown label: Doors open in
@@ -45,13 +45,13 @@ All user-facing copy from the current site, grouped by section in page order. No
 ### Section header
 
 - Eyebrow: Reserve your seat
-- Title: Three hours. One working agent. ₹109.
-- Body: Reserve your seat for three hours of live building. Leave with a working AI employee — no coding required.
+- Title: Six hours. One working agent.
+- Body: Reserve your seat for two live days of building — three hours each Saturday and Sunday. Leave with a working AI employee, your certificate, and a free career roadmap — no coding required.
 
 ### Value column
 
 - Countdown label: Doors open in
-- Duration line: 3 hours · Live Online Masterclass · ₹109
+- Duration line: 6 hours · 2 live sessions · Live Online Masterclass · ~~₹15,000~~ ₹111
 - Eyebrow: What you get
 - Benefits:
   - Build an AI Lead Generator
@@ -59,19 +59,23 @@ All user-facing copy from the current site, grouped by section in page order. No
   - Build a Gmail Automation Agent
   - Understand AI Workflows
   - Learn Agentic AI Fundamentals
+  - Certificate of completion after the masterclass
+  - Free career roadmap for your next step
   - Beginner Friendly
   - Live Q&A Included
 
 ### Registration card
 
 - Heading: Complete registration
-- Caption: ₹109 · takes about 30 seconds
+- Caption: ~~₹15,000~~ ₹111 · takes about 30 seconds
 - Ticket label: Your ticket
 - Ticket lines:
-  - June 7, 2026
-  - 2:00 PM – 5:00 PM IST
+  - Saturday 13 & Sunday 14 June 2026
+  - 2:00 PM – 5:00 PM IST each day
   - Live Online
-  - ₹109
+  - ~~₹15,000~~ ₹111 (dedicated price row in UI)
+  - Certificate of completion
+  - Free career roadmap
   - Limited seats
 
 ### Registration form fields
@@ -81,11 +85,19 @@ All user-facing copy from the current site, grouped by section in page order. No
 - Phone number (required) — placeholder: +91 98765 43210
 - College / Company (required)
 - Experience level (required) — options: Beginner · Intermediate · Advanced
-- Submit button: Reserve My Seat for ₹109
+- Submit button: Reserve My Seat for ~~₹15,000~~ ₹111
 - Pending: Reserving your seat…
 - Success title: You're in.
-- Success body: Check your email for your live access link. See you Sunday, 2:00 PM IST.
+- Success body: Check your email for your live access link. Your certificate and career roadmap arrive after you complete both days. See you Saturday 13 June, 2:00 PM IST.
 - Error: Something went wrong. Your details are still here — try again in a moment.
+
+### Promotional video (placeholder — after registration)
+
+- Eyebrow: Watch
+- Title: See what you'll build in two days
+- Caption: Promotional video coming soon.
+- Frame label: Video placeholder
+- Note: 16:9 reserved slot (`#promo-video`) — replace with hosted player when asset is ready
 
 ### Registration validation messages
 
@@ -165,9 +177,9 @@ All user-facing copy from the current site, grouped by section in page order. No
   - Email Generator writes the copy
   - Gmail saves the draft
 - Input label: Describe what your AI Employee should do
-- Sample input value: I want to qualify leads and generate personalized emails
+- Sample input value: Run the full AI agent workflow—show me every step live
 - Input helper: Sample prompt for this demo. In the session you will wire your own.
-- Button: Generate Workflow
+- Button: Build (chat-style composer with prompt field)
 - Hint: Interactive demo · scroll through each step after you generate
 
 ### Workflow nodes (step explanations)
@@ -228,21 +240,33 @@ All user-facing copy from the current site, grouped by section in page order. No
 
 ## Agenda
 
-- Eyebrow: The three hours
-- Title: Three hours. One working agent.
-- Description: Every hour ends with something you can do — not just something you heard.
+- Eyebrow: Two days
+- Title: Six hours. One working agent.
+- Description: Three hours each day — Saturday and Sunday, 2:00 PM to 5:00 PM IST. Every hour ends with something you can do — not just something you heard.
 
-### Hour 1 — AI Foundations
+### Saturday · Hour 1 — AI Foundations
 
 - Outcome: Understand how agentic AI actually works — and why it replaces tasks, not just answers questions.
 
-### Hour 2 — Build Your Agent
+### Saturday · Hour 2 — Build Your Agent
 
-- Outcome: Build a working AI agent live, with no code — wired to real tools and real tasks.
+- Outcome: Start building a working AI agent live, with no code — wired toward real tools and real tasks.
 
-### Hour 3 — Deploy & Automate
+### Saturday · Hour 3 — Tools & Memory
 
-- Outcome: Deploy your agent and connect it to Telegram and Gmail so it runs on its own.
+- Outcome: Connect your agent to tools and memory so it can act with context, not one-off replies.
+
+### Sunday · Hour 1 — Deploy Your Agent
+
+- Outcome: Deploy what you built and get it running in a live environment.
+
+### Sunday · Hour 2 — Telegram & Gmail
+
+- Outcome: Connect your agent to Telegram and Gmail so it communicates and drafts on your behalf.
+
+### Sunday · Hour 3 — Live Automation
+
+- Outcome: Run your agent end to end — lead in, action out — and leave with automation you can use Monday.
 
 ---
 
@@ -348,7 +372,7 @@ All user-facing copy from the current site, grouped by section in page order. No
 
 - Eyebrow: Your place in it
 - Headline: Build Your First AI Employee
-- Button: Reserve My Seat for ₹109
+- Button: Reserve My Seat for ₹111
 
 ---
 
@@ -436,19 +460,28 @@ No. The entire masterclass is no-code. You'll build a working AI agent with visu
 Yes. We start from foundations and move step by step. If you can follow instructions on a laptop, you can keep up.
 
 **Will there be a recording?**  
-This is a live, interactive session. Attend live to ask questions and build alongside the instructor.
+This is a live, interactive two-day masterclass. Attend both sessions to ask questions and build alongside the instructor.
 
 **How will I receive joining details?**  
-Immediately after registration. We'll email your live access link to the address you provide — keep it handy for session day.
+Immediately after registration. We'll email your live access link to the address you provide — keep it handy for both session days.
 
 **What tools will be used?**  
 Industry-standard no-code and agent tools we'll introduce live. You need a laptop, stable internet, and free accounts where noted — we guide setup at the start.
 
 **How do I make payment?**  
-After you submit this form, you'll complete secure checkout for ₹109. Payment confirmation is required to reserve your seat.
+After you submit this form, you'll complete secure checkout for ₹111 (₹15,000 value). Payment confirmation is required to reserve your seat.
+
+**What is your refund policy?**  
+If you could not attend the masterclass or felt you did not understand what was covered, contact us after the sessions and we will issue a refund. Email the address in the footer with your registration details and we will take it from there.
 
 **What happens after registration?**  
-You'll receive a confirmation email with your live link. Show up on time with your laptop — you'll leave with a deployed agent connected to real tools.
+You'll receive a confirmation email with your live link. Show up on time Saturday and Sunday with your laptop — you'll leave with a deployed agent connected to real tools.
+
+**Will I get a certificate?**  
+Yes. Everyone who completes the two-day masterclass receives a certificate of completion — a shareable proof you built with agentic AI.
+
+**What is the free career roadmap?**  
+After the masterclass, you get a personalized career roadmap at no extra cost — clear next steps for skills, projects, and roles in the AI economy.
 
 ---
 
@@ -456,17 +489,17 @@ You'll receive a confirmation email with your live link. Show up on time with yo
 
 - Eyebrow: Last opportunity
 - Headline: The Future Won't Hire Humans Who Compete With AI. It Will Hire Humans Who Build AI.
-- Urgency: Seats are limited for this live build session. When the countdown ends, doors close.
+- Urgency: Seats are limited for this two-day live build. When the countdown ends, doors close.
 - Countdown label: Doors open in
-- Price line: ₹109 · one live session · 3 hours
-- Button: Reserve My Seat for ₹109
+- Price line: ~~₹15,000~~ ₹111 · two live sessions · 3 hours each day
+- Button: Reserve My Seat for ~~₹15,000~~ ₹111
 
 ---
 
 ## Mobile sticky bar (testimonials / FAQ / final CTA)
 
 - Region label: Reserve your seat
-- Button: Reserve My Seat for ₹109
+- Button: Reserve My Seat for ~~₹15,000~~ ₹111
 
 ---
 
@@ -476,10 +509,10 @@ You'll receive a confirmation email with your live link. Show up on time with yo
 
 - NeuralVarsity.
 - Build Your First AI Employee
-- [Full event date]
-- [Time range] IST
+- Saturday 13 & Sunday 14 June 2026
+- 2:00 PM – 5:00 PM IST · Saturday & Sunday
 - Live Online Masterclass
-- ₹109
+- ~~₹15,000~~ ₹111
 
 ### Contact
 

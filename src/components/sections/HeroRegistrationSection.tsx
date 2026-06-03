@@ -1,6 +1,7 @@
 import { Container, Eyebrow, Headline, Body } from "@/components/ui";
 import { RegistrationValueColumn } from "@/components/sections/RegistrationValueColumn";
 import { RegistrationFormCard } from "@/components/sections/RegistrationFormCard";
+import { MasterclassPromoVideoPlaceholder } from "@/components/sections/MasterclassPromoVideoPlaceholder";
 import { whyAttend } from "@/content/registration";
 
 /**
@@ -44,6 +45,8 @@ export function HeroRegistrationSection() {
             </div>
           </div>
         </div>
+
+        <MasterclassPromoVideoPlaceholder className="mt-12 sm:mt-16 lg:mt-20" />
       </Container>
     </section>
   );

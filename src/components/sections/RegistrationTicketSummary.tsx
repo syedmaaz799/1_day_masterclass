@@ -1,3 +1,4 @@
+import { EventPrice } from "@/components/ui";
 import { ticketSummary } from "@/content/registration";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +29,12 @@ export function RegistrationTicketSummary({ className }: { className?: string })
             <span>{line}</span>
           </li>
         ))}
+        <li className="flex items-center gap-2.5 font-sans text-body text-text">
+          <span aria-hidden className="text-success">
+            ✓
+          </span>
+          <EventPrice size="sm" />
+        </li>
       </ul>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Container, SectionHeading, Eyebrow, Headline, Body } from "@/components/ui";
 import { Reveal } from "@/components/motion";
-import { agenda } from "@/content/agenda";
+import { agenda, agendaSection } from "@/content/agenda";
 
 /**
  * Section 5 — Masterclass Agenda. Editorial, promise-per-hour layout (large numerals +
@@ -17,9 +17,9 @@ export function AgendaSection() {
       <Container className="relative">
         <Reveal>
           <SectionHeading
-            eyebrow="The three hours"
-            title="Three hours. One working agent."
-            description="Every hour ends with something you can do — not just something you heard."
+            eyebrow={agendaSection.eyebrow}
+            title={agendaSection.title}
+            description={agendaSection.description}
             id="agenda-heading"
           />
         </Reveal>

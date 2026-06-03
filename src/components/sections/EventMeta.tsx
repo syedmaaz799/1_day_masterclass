@@ -1,4 +1,4 @@
-import { Pill } from "@/components/ui";
+import { EventPrice, Pill } from "@/components/ui";
 import { event } from "@/content/event";
 import { cn } from "@/lib/utils";
 
@@ -7,29 +7,6 @@ import { cn } from "@/lib/utils";
  * Sourced from content/event (single source of truth, 01-project). Conversion: the
  * essentials are visible immediately (04-conversion). Thin monochrome icons (03).
  */
-
-const TZ = event.timezone;
-
-function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat("en-IN", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    timeZone: TZ,
-  }).format(date);
-}
-
-function formatTimeRange(start: Date, end: Date): string {
-  const time = (d: Date) =>
-    new Intl.DateTimeFormat("en-IN", {
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true,
-      timeZone: TZ,
-    }).format(d);
-  return `${time(start)} – ${time(end)} ${event.timezoneLabel}`;
-}
 
 const iconClass = "size-4";
 
@@ -66,16 +43,18 @@ export function EventMeta({ className }: EventMetaProps) {
   return (
     <ul className={cn("flex flex-wrap items-center gap-3", className)}>
       <li>
-        <Pill icon={<CalendarIcon />}>{formatDate(event.startsAt)}</Pill>
+        <Pill icon={<CalendarIcon />}>{event.schedule.datePill}</Pill>
       </li>
       <li>
-        <Pill icon={<ClockIcon />}>{formatTimeRange(event.startsAt, event.endsAt)}</Pill>
+        <Pill icon={<ClockIcon />}>{event.schedule.timePill}</Pill>
       </li>
       <li>
         <Pill icon={<BroadcastIcon />}>{event.mode}</Pill>
       </li>
       <li>
-        <Pill emphasis>{`₹${event.priceInINR}`}</Pill>
+        <Pill emphasis>
+          <EventPrice size="sm" />
+        </Pill>
       </li>
     </ul>
   );

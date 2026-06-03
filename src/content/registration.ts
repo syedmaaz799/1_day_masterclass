@@ -9,24 +9,27 @@ export const registrationBenefits = [
   "Build a Gmail Automation Agent",
   "Understand AI Workflows",
   "Learn Agentic AI Fundamentals",
+  "Certificate of completion after the masterclass",
+  "Free career roadmap for your next step",
   "Beginner Friendly",
   "Live Q&A Included",
 ] as const;
 
 export const whyAttend = {
   eyebrow: "Reserve your seat",
-  title: "Three hours. One working agent. ₹109.",
-  body: "Reserve your seat for three hours of live building. Leave with a working AI employee — no coding required.",
+  title: "Six hours. One working agent.",
+  body: "Reserve your seat for two live days of building — three hours each Saturday and Sunday. Leave with a working AI employee, your certificate, and a free career roadmap — no coding required.",
 } as const;
 
 /** Compact ticket lines above the form (Issue 6). */
 export const ticketSummary = {
   label: "Your ticket",
   lines: [
-    "June 7, 2026",
-    "2:00 PM – 5:00 PM IST",
+    "Saturday 13 & Sunday 14 June 2026",
+    "2:00 PM – 5:00 PM IST each day",
     "Live Online",
-    "₹109",
+    "Certificate of completion",
+    "Free career roadmap",
     "Limited seats",
   ],
 } as const;
@@ -39,10 +42,11 @@ export const conversionBridge = {
 
 export const formMicrocopy = {
   helper: "We'll send your live access link to this email.",
-  submit: "Reserve My Seat for ₹109",
+  submitPrefix: "Reserve My Seat for",
   pending: "Reserving your seat…",
   successTitle: "You're in.",
-  successBody: "Check your email for your live access link. See you Sunday, 2:00 PM IST.",
+  successBody:
+    "Check your email for your live access link. Your certificate and career roadmap arrive after you complete both days. See you Saturday 13 June, 2:00 PM IST.",
   errorBody: "Something went wrong. Your details are still here — try again in a moment.",
 } as const;
 
@@ -50,8 +54,8 @@ export const formMicrocopy = {
 export const finalCta = {
   eyebrow: "Last opportunity",
   urgency:
-    "Seats are limited for this live build session. When the countdown ends, doors close.",
-  ctaLabel: "Reserve My Seat for ₹109",
+    "Seats are limited for this two-day live build. When the countdown ends, doors close.",
+  ctaLabelPrefix: "Reserve My Seat for",
 } as const;
 
 /** FAQ transition intro (Issue 8). */

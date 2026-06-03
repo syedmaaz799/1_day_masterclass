@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui";
+import { Button, EventPrice } from "@/components/ui";
 import { event } from "@/content/event";
 import { scrollToRegister } from "@/lib/scroll-to-register";
 
@@ -66,7 +66,10 @@ export function MobileRegistrationBar() {
         className="min-h-12"
         onClick={() => scrollToRegister("mobile-sticky-bar")}
       >
-        {event.cta.primaryWithPrice}
+        <span className="inline-flex flex-wrap items-center justify-center gap-x-1.5">
+          {event.cta.primaryWithPrice}
+          <EventPrice size="sm" />
+        </span>
       </Button>
     </div>
   );

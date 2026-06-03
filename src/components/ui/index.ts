@@ -30,3 +30,4 @@ export { TextArea } from "@/components/ui/TextArea";
 export { Accordion, AccordionItem } from "@/components/ui/Accordion";
 export { CountdownTimer } from "@/components/ui/CountdownTimer";
 export { SeatCounter } from "@/components/ui/SeatCounter";
+export { EventPrice } from "@/components/ui/EventPrice";

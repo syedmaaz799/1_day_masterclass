@@ -1,8 +1,8 @@
-import { Eyebrow, Body, Caption } from "@/components/ui";
+import { Eyebrow, Body, Caption, EventPrice } from "@/components/ui";
 import { CountdownTimer, SeatCounter } from "@/components/ui";
 import { EventMeta } from "@/components/sections/EventMeta";
 import { event } from "@/content/event";
-import { registrationBenefits } from "@/content/registration";
+import { registrationBenefits, whyAttend } from "@/content/registration";
 
 type RegistrationValueColumnProps = {
   /** When false, heading is provided by HeroRegistrationSection header. */
@@ -21,7 +21,7 @@ export function RegistrationValueColumn({ showHeader = true }: RegistrationValue
             Why attend
           </Eyebrow>
           <Body size="lg" className="max-w-lg text-text-2">
-            Three hours to deploy your first AI employee — live, no coding required.
+            {whyAttend.body}
           </Body>
         </div>
       ) : null}
@@ -34,7 +34,7 @@ export function RegistrationValueColumn({ showHeader = true }: RegistrationValue
         </Caption>
         <CountdownTimer
           target={event.startsAt}
-          ariaLabel="Time remaining until the masterclass begins"
+          ariaLabel={event.schedule.countdownAriaLabel}
         />
         <SeatCounter
           remaining={event.seatsRemaining}
@@ -42,7 +42,10 @@ export function RegistrationValueColumn({ showHeader = true }: RegistrationValue
           className="max-w-sm"
         />
         <p className="font-sans text-caption text-text-2">
-          {`${event.durationHours} hours · ${event.mode} · ₹${event.priceInINR}`}
+          <span className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <span>{`${event.schedule.durationLabel} · ${event.mode} ·`}</span>
+            <EventPrice size="sm" />
+          </span>
         </p>
       </div>
 

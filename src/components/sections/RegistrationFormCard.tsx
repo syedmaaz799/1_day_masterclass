@@ -1,10 +1,8 @@
 "use client";
 
-import { Caption } from "@/components/ui";
+import { Caption, EventPrice } from "@/components/ui";
 import { RegistrationForm } from "@/components/forms/RegistrationForm";
 import { RegistrationTicketSummary } from "@/components/sections/RegistrationTicketSummary";
-import { event } from "@/content/event";
-
 /**
  * Sticky registration card (desktop) — auto height, no internal scroll (Issue 2).
  */
@@ -21,8 +19,9 @@ export function RegistrationFormCard() {
         >
           Complete registration
         </h3>
-        <Caption as="p">
-          {`₹${event.priceInINR} · takes about 30 seconds`}
+        <Caption as="p" className="inline-flex flex-wrap items-baseline gap-x-2">
+          <EventPrice size="sm" />
+          <span>· takes about 30 seconds</span>
         </Caption>
       </div>
 
