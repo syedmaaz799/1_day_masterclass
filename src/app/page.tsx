@@ -13,6 +13,7 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { FooterSection } from "@/components/sections/FooterSection";
+import { MobileRegistrationBar } from "@/components/sections/MobileRegistrationBar";
 
 /**
  * Site-wide aurora background in layout. Story + conversion share atmosphere.
@@ -40,6 +41,7 @@ export default function Home() {
         </ConversionZone>
         <FooterSection />
       </main>
+      <MobileRegistrationBar />
     </>
   );
 }

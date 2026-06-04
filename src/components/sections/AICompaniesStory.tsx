@@ -14,7 +14,7 @@ import { BrandMark } from "@/components/sections/BrandLogos";
 import { aiCompanies, type AICompany } from "@/content/ai-companies";
 import { event } from "@/content/event";
 import { scrollToRegister } from "@/lib/scroll-to-register";
-import { clamp, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 /**
  * AICompaniesStory — "The Companies Building the AI Future" (Section 5.5).
@@ -26,13 +26,13 @@ import { clamp, cn } from "@/lib/utils";
  * bridge.
  *
  * Each company owns its identity: its official brand colour drives a monumental logotype,
- * the background Core tints to it, capabilities and the progress rail pick it up. A
- * scroll-synced "conductor" marks the active chapter [data-active] so its brand reveal
- * resolves (see globals.css) — and a relay "bridge" line hands off from the previous
- * company so the ecosystem feels like it is evolving, not like slides changing.
+ * the background Core tints to it, capabilities pick it up. A scroll-synced "conductor"
+ * marks the active chapter [data-active] so its brand reveal resolves (see globals.css)
+ * — and a relay "bridge" line hands off from the previous company so the ecosystem
+ * feels like it is evolving, not like slides changing.
  *
  * Reduced motion: ScrollStory degrades to a stacked, full-height vertical scroll; reveals
- * are forced visible; the scrub-only progress rail is omitted.
+ * are forced visible; the scrub-driven register CTA is omitted.
  */
 
 const STAGE_VH_DESKTOP = 72;
@@ -55,10 +55,7 @@ export function AICompaniesStory() {
   const isLgUp = useIsLgUp();
   const chapterRefs = useRef<(HTMLDivElement | null)[]>([]);
   const glowRef = useRef<HTMLDivElement>(null);
-  const railRef = useRef<HTMLDivElement>(null);
-  const fillRef = useRef<HTMLDivElement>(null);
-  const numRef = useRef<HTMLSpanElement>(null);
-  const nameRef = useRef<HTMLSpanElement>(null);
+  const registerCtaRef = useRef<HTMLDivElement>(null);
 
   return (
     <ScrollStory
@@ -88,14 +85,7 @@ export function AICompaniesStory() {
         </div>
       </div>
 
-      <StoryConductor
-        chapterRefs={chapterRefs}
-        glowRef={glowRef}
-        railRef={railRef}
-        fillRef={fillRef}
-        numRef={numRef}
-        nameRef={nameRef}
-      />
+      <StoryConductor chapterRefs={chapterRefs} glowRef={glowRef} registerCtaRef={registerCtaRef} />
 
       {/* Chapter 1 — the opening statement */}
       <StoryStage
@@ -186,31 +176,23 @@ export function AICompaniesStory() {
         </Container>
       </StoryStage>
 
-      {/* Continuous progress rail (scrub-driven; omitted under reduced motion) */}
+      {/* Register CTA during company reveals (replaces progress rail) */}
       {!reduced && (
         <div
-          ref={railRef}
-          className="pointer-events-none absolute inset-x-0 bottom-8 z-20 opacity-0 transition-opacity duration-500"
+          ref={registerCtaRef}
+          id="ai-companies-register-cta"
+          className="absolute inset-x-0 bottom-6 z-20 px-4 sm:bottom-8"
+          style={{ display: "none" }}
+          aria-hidden
         >
           <Container>
-            <div className="flex items-center gap-4">
-              <span className="font-display text-caption tabular-nums text-text">
-                <span ref={numRef}>01</span>
-                <span className="text-text-2"> / {String(N).padStart(2, "0")}</span>
-              </span>
-              <div className="relative h-px flex-1 overflow-hidden bg-white/12">
-                <div
-                  ref={fillRef}
-                  className="absolute inset-y-0 left-0 w-full origin-left"
-                  style={{ transform: "scaleX(0)", backgroundColor: DEFAULT_TINT }}
-                />
-              </div>
-              <span
-                ref={nameRef}
-                className="font-sans text-caption uppercase tracking-[0.16em] text-text-2"
-              >
-                OpenAI
-              </span>
+            <div className="flex justify-center">
+              <Button size="lg" onClick={handleReserve} className="pointer-events-auto min-h-12">
+                <span className="inline-flex flex-wrap items-center justify-center gap-x-1.5">
+                  {event.cta.primaryWithPrice}
+                  <EventPrice size="sm" />
+                </span>
+              </Button>
             </div>
           </Container>
         </div>
@@ -224,19 +206,17 @@ export function AICompaniesStory() {
 type Refs = {
   chapterRefs: RefObject<(HTMLDivElement | null)[]>;
   glowRef: RefObject<HTMLDivElement | null>;
-  railRef: RefObject<HTMLDivElement | null>;
-  fillRef: RefObject<HTMLDivElement | null>;
-  numRef: RefObject<HTMLSpanElement | null>;
-  nameRef: RefObject<HTMLSpanElement | null>;
+  registerCtaRef: RefObject<HTMLDivElement | null>;
 };
 
 /**
  * Headless: maps the story's smoothed scroll progress to the active company, toggling
- * [data-active] (brand reveal), tinting the Core, and advancing the progress rail —
+ * [data-active] (brand reveal), tinting the Core, and showing the register CTA —
  * all imperatively, no per-frame React renders.
  */
-function StoryConductor({ chapterRefs, glowRef, railRef, fillRef, numRef, nameRef }: Refs) {
+function StoryConductor({ chapterRefs, glowRef, registerCtaRef }: Refs) {
   const lastIndex = useRef(-2);
+  const lastRegisterVisible = useRef(false);
   const span = TOTAL_STAGES - 1;
 
   useStoryProgress((p) => {
@@ -254,20 +234,19 @@ function StoryConductor({ chapterRefs, glowRef, railRef, fillRef, numRef, nameRe
 
       const c = inCompanies ? aiCompanies[companyIndex] : undefined;
       if (glowRef.current) glowRef.current.style.color = c?.color ?? DEFAULT_TINT;
-
-      if (c) {
-        if (numRef.current) numRef.current.textContent = String(nearest).padStart(2, "0");
-        if (nameRef.current) nameRef.current.textContent = c.name;
-        if (fillRef.current) fillRef.current.style.backgroundColor = c.color;
-      }
     }
 
-    // Continuous fill across the ten company chapters (stages 1..N).
-    const railProgress = clamp((active - 1) / (N - 1), 0, 1);
-    if (fillRef.current) fillRef.current.style.transform = `scaleX(${railProgress})`;
-
-    const show = active >= 0.5 && active <= N + 0.5;
-    if (railRef.current) railRef.current.style.opacity = show ? "1" : "0";
+    const showRegister = active >= 0.5 && active <= N + 0.5;
+    if (registerCtaRef.current) {
+      registerCtaRef.current.style.display = showRegister ? "block" : "none";
+      registerCtaRef.current.setAttribute("aria-hidden", showRegister ? "false" : "true");
+    }
+    if (showRegister !== lastRegisterVisible.current) {
+      lastRegisterVisible.current = showRegister;
+      window.dispatchEvent(
+        new CustomEvent("ai-companies-register-cta", { detail: { visible: showRegister } }),
+      );
+    }
   });
 
   return null;

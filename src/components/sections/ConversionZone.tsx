@@ -2,10 +2,9 @@
 
 import { useEffect } from "react";
 import { trackScrollDepthMilestone } from "@/lib/conversion-scroll";
-import { MobileRegistrationBar } from "@/components/sections/MobileRegistrationBar";
 /**
- * ConversionZone — client shell for conversion-only behaviors: scroll-depth milestones
- * and the mobile sticky CTA. Wraps Feedback → Testimonials → FAQ → Final CTA.
+ * ConversionZone — client shell for conversion-only behaviors: scroll-depth milestones.
+ * Wraps Feedback → Testimonials → FAQ → Final CTA.
  */
 export function ConversionZone({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -22,10 +21,5 @@ export function ConversionZone({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return (
-    <>
-      {children}
-      <MobileRegistrationBar />
-    </>
-  );
+  return <>{children}</>;
 }
