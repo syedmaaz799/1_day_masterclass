@@ -40,7 +40,7 @@ function TitleSecondLine({ size }: { size: TitleSize }) {
     );
   }
 
-  const [, prefix, suffix = "24/7"] = uptime;
+  const [, prefix = "", suffix = "24/7"] = uptime;
 
   return (
     <span className={cn("block text-text", headlineSecondary[size])}>
