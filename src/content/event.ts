@@ -8,16 +8,16 @@ export const event = {
   brand: "NeuralVarsity",
   series: "Agentic AI Masterclass",
   title: "Build Your First AI Employee",
-  titleTagline: "Which runs 24/7",
+  titleTagline: "Which works 24/7",
   subtitle:
     "Learn how to build AI Agents that automate real business tasks without writing code.",
   heroSubheadline:
     "Discover how to create AI Agents that generate leads, automate communication, and perform real business tasks without coding.",
 
-  // Day 1: Saturday 13 June 2026, 2:00 PM IST. Countdown targets first session.
-  startsAt: new Date("2026-06-13T14:00:00+05:30"),
-  // Day 2: Sunday 14 June 2026, 5:00 PM IST (end of second session).
-  endsAt: new Date("2026-06-14T17:00:00+05:30"),
+  // Day 1: Saturday 20 June 2026, 2:00 PM IST. Countdown targets first session.
+  startsAt: new Date("2026-06-20T14:00:00+05:30"),
+  // Day 2: Sunday 21 June 2026, 5:00 PM IST (end of second session).
+  endsAt: new Date("2026-06-21T17:00:00+05:30"),
   timezone: "Asia/Kolkata",
   timezoneLabel: "IST",
 
@@ -29,21 +29,21 @@ export const event = {
   priceInINR: 111,
 
   schedule: {
-    heroEyebrow: "Live Online Masterclass · 13–14 Jun 2026",
-    datePill: "Sat 13 & Sun 14 Jun 2026",
+    heroEyebrow: "Live Online Masterclass · 20–21 Jun 2026",
+    datePill: "Sat 20 & Sun 21 Jun 2026",
     timePill: "2:00 PM – 5:00 PM IST · Sat & Sun",
-    footerDate: "Saturday 13 & Sunday 14 June 2026",
+    footerDate: "Saturday 20 & Sunday 21 June 2026",
     footerTime: "2:00 PM – 5:00 PM IST · Saturday & Sunday",
     durationLabel: "6 hours · 2 live sessions",
     finalCtaPriceSuffix: "· two live sessions · 3 hours each day",
     countdownAriaLabel:
-      "Time remaining until the masterclass begins on Saturday 13 June 2026 at 2:00 PM IST",
+      "Time remaining until the masterclass begins on Saturday 20 June 2026 at 2:00 PM IST",
   },
 
   // Seats remaining is config-driven, never random (04-conversion).
   // Wire to real inventory in a later phase; this is the controlled fallback.
   seatsTotal: 500,
-  seatsRemaining: 137,
+  seatsRemaining: 236,
 
   cta: {
     primary: "Reserve My Seat",

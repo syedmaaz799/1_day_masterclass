@@ -7,9 +7,8 @@ export const footer = {
   contact: {
     heading: "Contact",
     label: "Email",
-    // TODO: replace with verified support address before launch.
-    email: "hello@neuralvarsity.com",
-    href: "mailto:hello@neuralvarsity.com",
+    email: "admissions@neuralvarsity.ai",
+    href: "mailto:admissions@neuralvarsity.ai",
   },
   quickLinks: {
     heading: "Quick links",

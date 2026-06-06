@@ -17,10 +17,11 @@ const headlinePrimary = {
   footer: "text-h3 font-semibold leading-[1.2]",
 } as const;
 
+/** Same font family + weight as line one; smaller scale and accent on the uptime hook. */
 const headlineSecondary = {
-  xl: "text-display-l font-normal tracking-[-0.02em]",
-  l: "text-h2 font-normal tracking-[-0.01em]",
-  footer: "text-h3 font-normal leading-[1.2]",
+  xl: "text-display-l font-semibold tracking-[-0.02em]",
+  l: "text-h2 font-semibold tracking-[-0.01em]",
+  footer: "text-body-lg font-semibold leading-[1.2]",
 } as const;
 
 const lineGap = {
@@ -29,7 +30,6 @@ const lineGap = {
   footer: "mt-2",
 } as const;
 
-/** Second headline line — display scale, lighter weight, accent on the uptime hook. */
 function TitleSecondLine({ size }: { size: TitleSize }) {
   const text = event.titleTagline;
   const uptime = text.match(/^(.*?)(\s*24\/7)$/);
@@ -43,16 +43,16 @@ function TitleSecondLine({ size }: { size: TitleSize }) {
   const [, prefix = "", suffix = "24/7"] = uptime;
 
   return (
-    <span className={cn("block text-text", headlineSecondary[size])}>
+    <span className={cn("block text-text-2", headlineSecondary[size])}>
       {prefix.trimEnd()}
       {" "}
-      <span className="font-semibold tabular-nums text-accent">{suffix.trim()}</span>
+      <span className="tabular-nums text-accent">{suffix.trim()}</span>
     </span>
   );
 }
 
 /**
- * Two-line display lockup — line two is visually distinct (weight + accent) but stays headline-scale.
+ * Two-line display lockup — line two matches font style (family + weight), not size or color.
  */
 export function EventTitle({ size = "xl", as, id, className }: EventTitleProps) {
   const defaultTag = size === "footer" ? "p" : size === "l" ? "h2" : "h1";

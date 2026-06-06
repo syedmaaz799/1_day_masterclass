@@ -108,6 +108,38 @@
   --nav-h: 4rem;
 }
 
+/* ShinyButton — animatable custom properties (SHINY-BUTTON.md Step 1).
+   Registered globally so conic-gradient border spin interpolates reliably. */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-angle-offset {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-percent {
+  syntax: "<percentage>";
+  initial-value: 5%;
+  inherits: false;
+}
+
+@property --gradient-shine {
+  syntax: "<color>";
+  initial-value: white;
+  inherits: false;
+}
+
+@keyframes shiny-gradient-angle {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
 @layer base {
   * {
     border-color: rgb(255 255 255 / 0.08);

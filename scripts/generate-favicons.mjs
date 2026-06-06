@@ -55,7 +55,6 @@ function roundFavicon(crest, size) {
 const outputs = [
   { file: "src/app/icon.png", size: 32 },
   { file: "src/app/apple-icon.png", size: 180 },
-  { file: "public/favicon.png", size: 32 },
   { file: "public/apple-touch-icon.png", size: 180 },
   { file: "public/favicon-16x16.png", size: 16 },
   { file: "public/favicon-32x32.png", size: 32 },

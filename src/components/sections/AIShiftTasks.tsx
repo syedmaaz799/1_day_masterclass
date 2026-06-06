@@ -11,8 +11,8 @@ import { automationTasks } from "@/content/ai-shift";
  * "I am watching my workload disappear," not "I am watching rows animate."
  *
  * Storyboard (scrubbed across one pinned scene):
- *  - Intro hold: all six tasks read BY HAND. Calm, equal, no motion → "my workload".
- *  - Then ONE task at a time: a subtle highlight crosses the row, "BY HAND" dissolves,
+ *  - Intro hold: all six tasks read Manual. Calm, equal, no motion → "my workload".
+ *  - Then ONE task at a time: a subtle highlight crosses the row, "Manual" dissolves,
  *    "AUTOMATED" takes its place, and a thin accent edge fills in. Completed rows STAY
  *    completed — the accent accumulates down the list → growing momentum.
  *  - Outro hold: every task is automated — cumulative accent on the list only.
@@ -109,7 +109,7 @@ export function AIShiftTasks() {
                         className="col-start-1 row-start-1 whitespace-nowrap text-text-2"
                         style={{ opacity: "calc(1 - var(--t))" }}
                       >
-                        By hand
+                        Manual
                       </span>
                       <span
                         className="col-start-1 row-start-1 whitespace-nowrap text-accent"

@@ -14,6 +14,7 @@ export { Divider } from "@/components/ui/Divider";
 
 // Core primitives
 export { Button } from "@/components/ui/Button";
+export { ShinyButton } from "@/components/ui/ShinyButton";
 export { Link } from "@/components/ui/Link";
 export { Badge } from "@/components/ui/Badge";
 export { Pill } from "@/components/ui/Pill";
