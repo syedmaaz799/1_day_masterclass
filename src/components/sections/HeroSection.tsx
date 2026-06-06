@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { Container, Display, Body, Eyebrow, Button, CountdownTimer, SeatCounter } from "@/components/ui";
+import { Container, EventTitle, Body, Eyebrow, Button, CountdownTimer, SeatCounter } from "@/components/ui";
 import { EventMeta } from "@/components/sections/EventMeta";
 import { event } from "@/content/event";
 import { scrollToRegister } from "@/lib/scroll-to-register";
@@ -61,7 +61,7 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div variants={item}>
-            <Display size="xl">{event.title}</Display>
+            <EventTitle size="xl" />
           </motion.div>
 
           <motion.div variants={item}>

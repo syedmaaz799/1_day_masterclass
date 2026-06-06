@@ -1,9 +1,11 @@
 "use client";
 
-import { useCallback, useId, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Button, EventPrice, Input, Select } from "@/components/ui";
+import { PhoneField } from "@/components/forms/PhoneField";
+import { currentRoles } from "@/content/current-roles";
+import { defaultPhoneCountryCode } from "@/content/phone-countries";
 import {
-  experienceLevels,
   fieldErrors,
   registrationSchema,
   type RegistrationInput,
@@ -17,9 +19,10 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 const emptyValues: RegistrationInput = {
   name: "",
   email: "",
-  phone: "",
-  organization: "",
-  experienceLevel: "Beginner",
+  phoneCountry: defaultPhoneCountryCode,
+  phoneNumber: "",
+  city: "",
+  currentRole: "Student",
 };
 
 type RegistrationFormProps = {
@@ -31,7 +34,6 @@ type RegistrationFormProps = {
 };
 
 export function RegistrationForm({ formId = "register", className, source }: RegistrationFormProps) {
-  const liveId = useId();
   const statusId = `${formId}-status`;
   const focusedRef = useRef(false);
   const completedFields = useRef(new Set<RegistrationFieldKey>());
@@ -40,6 +42,8 @@ export function RegistrationForm({ formId = "register", className, source }: Reg
   const [errors, setErrors] = useState<Partial<Record<keyof RegistrationInput, string>>>({});
   const [status, setStatus] = useState<FormStatus>("idle");
   const [formError, setFormError] = useState<string | null>(null);
+
+  const phoneError = errors.phoneNumber ?? errors.phoneCountry;
 
   const markFieldComplete = useCallback((field: RegistrationFieldKey, valid: boolean) => {
     if (!valid || completedFields.current.has(field)) return;
@@ -60,6 +64,10 @@ export function RegistrationForm({ formId = "register", className, source }: Reg
         setErrors((prev) => {
           const next = { ...prev };
           delete next[field];
+          if (field === "phoneNumber" || field === "phoneCountry") {
+            delete next.phoneNumber;
+            delete next.phoneCountry;
+          }
           return next;
         });
         return true;
@@ -72,6 +80,16 @@ export function RegistrationForm({ formId = "register", className, source }: Reg
     [values],
   );
 
+  const validatePhone = useCallback(() => {
+    const countryOk = validateField("phoneCountry");
+    const numberOk = validateField("phoneNumber");
+    const valid = countryOk && numberOk;
+    if (valid) {
+      markFieldComplete("phone", true);
+    }
+    return valid;
+  }, [markFieldComplete, validateField]);
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormError(null);
@@ -81,7 +99,11 @@ export function RegistrationForm({ formId = "register", className, source }: Reg
       setErrors(fieldErrors(parsed.error));
       const firstKey = parsed.error.issues[0]?.path[0];
       if (typeof firstKey === "string") {
-        document.getElementById(`${formId}-${firstKey}`)?.focus();
+        const focusId =
+          firstKey === "phoneCountry" || firstKey === "phoneNumber"
+            ? `${formId}-phoneNumber`
+            : `${formId}-${firstKey}`;
+        document.getElementById(focusId)?.focus();
       }
       return;
     }
@@ -156,51 +178,54 @@ export function RegistrationForm({ formId = "register", className, source }: Reg
         disabled={status === "submitting"}
       />
 
-      <Input
+      <PhoneField
         id={`${formId}-phone`}
-        name="phone"
-        type="tel"
+        countryId={`${formId}-phoneCountry`}
+        numberId={`${formId}-phoneNumber`}
         label="Phone number"
-        autoComplete="tel"
-        inputMode="tel"
-        placeholder="+91 98765 43210"
         required
-        value={values.phone}
-        onChange={(e) => setValues((v) => ({ ...v, phone: e.target.value }))}
-        onBlur={() => markFieldComplete("phone", validateField("phone"))}
-        error={errors.phone}
+        countryValue={values.phoneCountry}
+        numberValue={values.phoneNumber}
+        onCountryChange={(code) =>
+          setValues((v) => ({
+            ...v,
+            phoneCountry: code as RegistrationInput["phoneCountry"],
+          }))
+        }
+        onNumberChange={(phoneNumber) => setValues((v) => ({ ...v, phoneNumber }))}
+        onBlur={validatePhone}
+        error={phoneError}
         disabled={status === "submitting"}
       />
 
       <Input
-        id={`${formId}-organization`}
-        name="organization"
-        label="College / Company"
-        autoComplete="organization"
-        required
-        value={values.organization}
-        onChange={(e) => setValues((v) => ({ ...v, organization: e.target.value }))}
-        onBlur={() => markFieldComplete("organization", validateField("organization"))}
-        error={errors.organization}
+        id={`${formId}-city`}
+        name="city"
+        label="City"
+        autoComplete="address-level2"
+        value={values.city}
+        onChange={(e) => setValues((v) => ({ ...v, city: e.target.value }))}
+        onBlur={() => markFieldComplete("city", validateField("city"))}
+        error={errors.city}
         disabled={status === "submitting"}
       />
 
       <Select
-        id={`${formId}-experienceLevel`}
-        name="experienceLevel"
-        label="Experience level"
+        id={`${formId}-currentRole`}
+        name="currentRole"
+        label="Current role"
         required
-        value={values.experienceLevel}
+        value={values.currentRole}
         onChange={(e) =>
           setValues((v) => ({
             ...v,
-            experienceLevel: e.target.value as RegistrationInput["experienceLevel"],
+            currentRole: e.target.value as RegistrationInput["currentRole"],
           }))
         }
-        onBlur={() => markFieldComplete("experienceLevel", validateField("experienceLevel"))}
-        error={errors.experienceLevel}
+        onBlur={() => markFieldComplete("currentRole", validateField("currentRole"))}
+        error={errors.currentRole}
         disabled={status === "submitting"}
-        options={experienceLevels.map((level) => ({ value: level, label: level }))}
+        options={currentRoles.map((role) => ({ value: role, label: role }))}
       />
 
       {formError ? (

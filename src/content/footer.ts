@@ -16,7 +16,7 @@ export const footer = {
     items: [
       { id: "register", label: "Register", href: "#register-experience" },
       { id: "faq", label: "FAQ", href: "#faq" },
-      { id: "demo", label: "Watch Demo", href: "#demo" },
+      { id: "demo", label: "Watch Demo", href: "#promo-video" },
     ],
   },
   legal: {

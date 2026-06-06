@@ -11,7 +11,28 @@ function getNavOffsetPx(): number {
 }
 
 /**
- * Align the workflow scroll track so step 1 is visible (after Build).
+ * Scroll to the masterclass promo video placeholder (`#promo-video`).
+ * Used by Watch Demo CTAs in the hero and footer.
+ */
+export function scrollToDemo(source: string): void {
+  track("watch_demo_click", { source });
+  const target = document.getElementById("promo-video");
+  if (!target) return;
+
+  const offset = -getNavOffsetPx();
+  const lenis = getLenis();
+
+  if (lenis) {
+    lenis.scrollTo(target, { offset, duration: 1.1, lock: true, force: true });
+    return;
+  }
+
+  const top = target.getBoundingClientRect().top + window.scrollY + offset;
+  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+}
+
+/**
+ * Align the workflow scroll track (orbital demo section).
  */
 export function scrollToWorkflowTrack(duration = 0.85): void {
   const track =
@@ -32,39 +53,4 @@ export function scrollToWorkflowTrack(duration = 0.85): void {
     top: Math.max(0, top + offset),
     behavior: duration > 0 ? "smooth" : "auto",
   });
-}
-
-/**
- * Scroll to the live workflow demo (#demo intro or pinned scroll track when generated).
- */
-export function scrollToDemo(source: string): void {
-  track("watch_demo_click", { source });
-  const offset = -getNavOffsetPx();
-  const lenis = getLenis();
-
-  const trackEl =
-    document.getElementById("workflow-demo-track") ??
-    document.querySelector<HTMLElement>("[data-scroll-story-track='workflow']");
-  const intro = document.getElementById("demo");
-
-  let target: HTMLElement | number | null = null;
-
-  if (trackEl) {
-    target = trackEl.getBoundingClientRect().top + window.scrollY;
-  } else if (intro) {
-    target = intro;
-  }
-
-  if (target === null) return;
-
-  if (lenis) {
-    lenis.scrollTo(target, { offset, duration: 1.1, lock: true, force: true });
-    return;
-  }
-
-  const top =
-    typeof target === "number"
-      ? target + offset
-      : target.getBoundingClientRect().top + window.scrollY + offset;
-  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
 }

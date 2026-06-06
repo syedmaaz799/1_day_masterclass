@@ -2,10 +2,8 @@
 
 import { useMemo, useRef, useState } from "react";
 import { ScrollStory, useStoryProgress } from "@/components/motion";
-import { useIsLgUp } from "@/components/motion/use-media-query";
 import { Caption, Eyebrow, Body, Card } from "@/components/ui";
 import { RadialOrbitalTimeline } from "@/components/workflow-demo/RadialOrbitalTimeline";
-import { WorkflowDemoHeader } from "@/components/workflow-demo/WorkflowDemoHeader";
 import {
   agentTimelineData,
   buildWorkflowTimelineData,
@@ -19,6 +17,7 @@ const N = agentTimelineData.length;
 /** More scroll per beat so orbit centering and card open/close are easy to follow. */
 const STAGE_VH = 115;
 
+/** Header + orbit share one pinned column — no full-viewport vertical centering gap. */
 const WORKFLOW_ORBIT_STICKY =
   "sticky top-[var(--nav-h)] z-10 flex h-[calc(100dvh-var(--nav-h))] max-h-[calc(100dvh-var(--nav-h))] flex-col overflow-hidden bg-transparent";
 
@@ -57,7 +56,6 @@ function scrollHint(activeIndex: number | null): string {
 }
 
 function OrbitalScrollExperience() {
-  const isLgUp = useIsLgUp();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const activeIndexRef = useRef<number | null>(null);
   const timelineData = useMemo(() => buildWorkflowTimelineData(), []);
@@ -71,16 +69,15 @@ function OrbitalScrollExperience() {
   });
 
   if (reduced) {
-    return <OrbitalReducedList />;
+    return (
+      <div className="px-4 pt-4">
+        <OrbitalReducedList />
+      </div>
+    );
   }
 
   return (
-    <div className="flex h-full min-h-0 flex-col px-4 py-4 pb-20 lg:px-6 lg:py-5 lg:pb-5">
-      <WorkflowDemoHeader
-        variant={isLgUp ? "pinned" : "compact"}
-        className="relative z-10 mx-auto w-full max-w-2xl shrink-0 pb-2 lg:pb-4"
-      />
-
+    <div className="flex h-full min-h-0 flex-col px-2 pb-3 pt-1 sm:px-4 sm:pb-4">
       <div className="flex min-h-0 flex-1 items-center justify-center">
         <RadialOrbitalTimeline
           timelineData={timelineData}
@@ -90,7 +87,7 @@ function OrbitalScrollExperience() {
         />
       </div>
 
-      <Caption as="p" className="mt-2 shrink-0 text-center text-text-2 lg:mt-3">
+      <Caption as="p" className="mt-1 shrink-0 text-center text-text-2">
         {scrollHint(activeIndex)}
       </Caption>
     </div>

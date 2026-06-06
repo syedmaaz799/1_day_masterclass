@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ConversionSectionScrim } from "@/components/background/ConversionSectionScrim";
-import { BrandWordmark, Container, Caption, EventPrice } from "@/components/ui";
+import { BrandWordmark, Container, Caption, EventPrice, EventTitle } from "@/components/ui";
 import { FooterDemoLink } from "@/components/sections/FooterDemoLink";
 import { event } from "@/content/event";
 import { footer } from "@/content/footer";
@@ -50,9 +50,7 @@ export function FooterSection() {
             <div className="mb-1">
               <BrandWordmark variant="footer" />
             </div>
-            <p className="mt-3 font-display text-h3 font-semibold tracking-tight text-text">
-              {event.title}
-            </p>
+            <EventTitle size="footer" className="mt-3" />
             <ul className="mt-6 flex flex-col gap-2 font-sans text-body text-text-2">
               <li>{event.schedule.footerDate}</li>
               <li>{event.schedule.footerTime}</li>

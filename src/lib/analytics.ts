@@ -32,8 +32,8 @@ export type RegistrationFieldKey =
   | "name"
   | "email"
   | "phone"
-  | "organization"
-  | "experienceLevel";
+  | "city"
+  | "currentRole";
 
 const PII_KEYS = new Set([
   "name",
@@ -41,9 +41,9 @@ const PII_KEYS = new Set([
   "phone",
   "phonenumber",
   "fullname",
-  "college",
-  "company",
-  "organization",
+  "city",
+  "currentrole",
+  "currentRole",
 ]);
 
 function stripPii(props?: AnalyticsProps): AnalyticsProps | undefined {

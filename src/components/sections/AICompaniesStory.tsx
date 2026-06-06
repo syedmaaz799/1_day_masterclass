@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type RefObject } from "react";
-import { Container, Display, Headline, Body, Eyebrow, Button, EventPrice } from "@/components/ui";
+import { Container, Display, Headline, Body, Eyebrow, Button, EventPrice, EventTitle } from "@/components/ui";
 import {
   ScrollStory,
   StoryStage,
@@ -162,9 +162,7 @@ export function AICompaniesStory() {
             <Eyebrow tone="accent" withRule>
               Your place in it
             </Eyebrow>
-            <Display as="h2" size="l">
-              {event.title}
-            </Display>
+            <EventTitle as="h2" size="l" />
             <EventMeta className="justify-center" />
             <Button size="lg" onClick={handleReserve}>
               <span className="inline-flex flex-wrap items-center justify-center gap-x-1.5">

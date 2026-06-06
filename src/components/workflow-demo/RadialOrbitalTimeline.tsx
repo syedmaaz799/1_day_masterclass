@@ -136,15 +136,20 @@ export function RadialOrbitalTimeline({
 
     const update = () => {
       const { width, height } = el.getBoundingClientRect();
-      const fit = Math.min(1, width / ORBIT_DESIGN_SIZE, height / ORBIT_DESIGN_SIZE);
-      setOrbitScale(Number(fit.toFixed(3)));
+      const byWidth = width / ORBIT_DESIGN_SIZE;
+      const byHeight = height / ORBIT_DESIGN_SIZE;
+      const raw = scrollControlled
+        ? Math.min(byWidth, byHeight * 1.08, 1.08)
+        : Math.min(byWidth, byHeight, 1);
+      const fit = scrollControlled ? Math.max(0.78, raw) : raw;
+      setOrbitScale(Number(Math.min(1.08, fit).toFixed(3)));
     };
 
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [isMounted]);
+  }, [isMounted, scrollControlled]);
 
   const getRelatedItems = (itemId: number): number[] => {
     const currentItem = timelineData.find((item) => item.id === itemId);
@@ -248,7 +253,7 @@ export function RadialOrbitalTimeline({
       <div
         className={cn(
           "relative flex h-full min-h-0 w-full max-w-4xl items-center justify-center",
-          scrollControlled ? "py-4 lg:py-10" : "min-h-[inherit] py-10",
+          scrollControlled ? "py-0" : "min-h-[inherit] py-10",
         )}
       >
         <div
@@ -357,8 +362,8 @@ export function RadialOrbitalTimeline({
 
                     <div
                       className={cn(
-                        "flex size-10 items-center justify-center rounded-full border-2 transition-all",
-                        scrollControlled ? "duration-[600ms]" : "duration-300",
+                        "flex items-center justify-center rounded-full border-2 transition-all",
+                        scrollControlled ? "size-12 duration-[600ms]" : "size-10 duration-300",
                         isExpanded
                           ? "scale-150 border-white bg-white text-bg shadow-lg shadow-white/30"
                           : isRelated
@@ -366,13 +371,13 @@ export function RadialOrbitalTimeline({
                             : "border-white/40 bg-bg text-text",
                       )}
                     >
-                      <Icon size={16} />
+                      <Icon size={scrollControlled ? 20 : 16} />
                     </div>
 
                     <div
                       className={cn(
                         "absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap font-sans text-xs font-semibold tracking-wider transition-all",
-                        scrollControlled ? "duration-[600ms]" : "duration-300",
+                        scrollControlled ? "text-sm duration-[600ms]" : "duration-300",
                         isExpanded ? "scale-125 text-text" : "text-text-2",
                       )}
                     >

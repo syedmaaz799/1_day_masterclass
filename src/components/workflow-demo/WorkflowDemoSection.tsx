@@ -1,30 +1,10 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
-import { ScrollTrigger } from "@/components/motion/gsap";
 import { Container } from "@/components/ui";
-import { WorkflowDemoGate } from "@/components/workflow-demo/WorkflowDemoGate";
 import { WorkflowDemoHeader } from "@/components/workflow-demo/WorkflowDemoHeader";
 import { WorkflowOrbitalScrollView } from "@/components/workflow-demo/WorkflowOrbitalScrollView";
-import { scrollToWorkflowTrack } from "@/lib/scroll-to-demo";
 
 export function WorkflowDemoSection() {
-  const [generated, setGenerated] = useState(false);
-
-  useLayoutEffect(() => {
-    if (!generated) return;
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        scrollToWorkflowTrack(0.75);
-        ScrollTrigger.refresh();
-      });
-    });
-  }, [generated]);
-
-  const handleGenerate = () => {
-    setGenerated(true);
-  };
-
   return (
     <section
       id="demo"
@@ -36,15 +16,9 @@ export function WorkflowDemoSection() {
         className="absolute inset-0 bg-bg/25 lg:bg-[linear-gradient(to_right,var(--color-bg)_0%,rgb(5_5_5/0.45)_24%,transparent_65%)]"
       />
 
-      <Container className="relative py-16 sm:py-20 lg:py-section">
-        <WorkflowDemoHeader variant="full" />
-        {!generated ? (
-          <WorkflowDemoGate onGenerate={handleGenerate} />
-        ) : (
-          <div className="mt-8 sm:mt-10 lg:mt-12">
-            <WorkflowOrbitalScrollView />
-          </div>
-        )}
+      <Container className="relative py-12 sm:py-16 lg:py-20">
+        <WorkflowDemoHeader className="mb-6 sm:mb-8" />
+        <WorkflowOrbitalScrollView />
       </Container>
     </section>
   );

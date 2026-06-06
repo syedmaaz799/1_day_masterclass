@@ -32,3 +32,4 @@ export { CountdownTimer } from "@/components/ui/CountdownTimer";
 export { SeatCounter } from "@/components/ui/SeatCounter";
 export { EventPrice } from "@/components/ui/EventPrice";
 export { BrandWordmark } from "@/components/ui/BrandWordmark";
+export { EventTitle } from "@/components/ui/EventTitle";

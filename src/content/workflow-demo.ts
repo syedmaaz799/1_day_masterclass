@@ -1,27 +1,10 @@
 /**
- * Workflow demo section — educational scroll story (Section 4).
+ * Workflow demo section — scroll-driven orbital pipeline (Section 4).
  */
 
 export const workflowDemoSection = {
-  title: "Build Your First AI Employee",
-  subtitle: "See how an AI Employee works step-by-step.",
-  inputLabel: "Agent builder prompt",
-  inputDefaultValue: "Run the full AI agent workflow—show me every step live",
-  generateLabel: "Build",
-  gate: {
-    lead:
-      "Your prompt is ready. Tap Build to watch the full AI agent workflow—live, from Input to Output.",
-    composerLabel: "Agent builder",
-    inputHelper: "Tap Build to open the walkthrough",
-    previewTitle: "What this walkthrough covers",
-    previewSteps: [
-      "Input receives prompts",
-      "Planner routes the work",
-      "Retriever fetches knowledge",
-      "Tools execute APIs",
-      "Memory persists state",
-      "Output streams the response",
-    ] as const,
-    generateHint: "Live demo · scroll the orbit to open each node · takes under a minute",
-  },
+  eyebrow: "Live workflow",
+  title: "Every Node in Your AI Employee",
+  subtitle:
+    "Scroll the orbit to open each step—from prompt in to response out. This is the same pipeline you will wire live in the masterclass.",
 } as const;

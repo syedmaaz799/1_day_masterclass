@@ -8,6 +8,7 @@ export const event = {
   brand: "NeuralVarsity",
   series: "Agentic AI Masterclass",
   title: "Build Your First AI Employee",
+  titleTagline: "Which runs 24/7",
   subtitle:
     "Learn how to build AI Agents that automate real business tasks without writing code.",
   heroSubheadline:
