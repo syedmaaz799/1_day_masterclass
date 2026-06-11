@@ -31,7 +31,7 @@ export function TopNav() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled
-          ? "border-b border-white/8 bg-bg/70 backdrop-blur-md"
+          ? "border-b border-white/8 bg-bg/95 lg:bg-bg/70 lg:backdrop-blur-md"
           : "border-b border-transparent",
       )}
     >

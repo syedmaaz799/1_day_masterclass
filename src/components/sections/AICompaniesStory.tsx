@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, type RefObject } from "react";
+import { useRef, type CSSProperties, type RefObject } from "react";
+import { usePauseWhenOffscreen } from "@/components/motion/use-pause-when-offscreen";
 import { Container, Display, Headline, Body, Eyebrow, Button, EventPrice, EventTitle } from "@/components/ui";
 import {
   ScrollStory,
@@ -56,6 +57,8 @@ export function AICompaniesStory() {
   const chapterRefs = useRef<(HTMLDivElement | null)[]>([]);
   const glowRef = useRef<HTMLDivElement>(null);
   const registerCtaRef = useRef<HTMLDivElement>(null);
+  const stickyViewportRef = useRef<HTMLDivElement>(null);
+  const glowOnScreen = usePauseWhenOffscreen(stickyViewportRef);
 
   return (
     <ScrollStory
@@ -65,13 +68,22 @@ export function AICompaniesStory() {
       skipEntryFade
       stickyClassName={AI_COMPANIES_STICKY}
     >
+      <div ref={stickyViewportRef} className="pointer-events-none absolute inset-0" aria-hidden />
+
       {/* Persistent background intelligence — the AI Core, zoomed out, tinting to the
           active company so the ecosystem visibly evolves as you move through it. */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center"
       >
-        <div className="animate-[nv-core-breathe_7s_ease-in-out_infinite]">
+        <div
+          className="animate-[nv-core-breathe_7s_ease-in-out_infinite]"
+          style={
+            {
+              animationPlayState: glowOnScreen ? "running" : "paused",
+            } as CSSProperties
+          }
+        >
           <div
             ref={glowRef}
             className="size-[min(82vw,580px)] rounded-full"
@@ -183,7 +195,7 @@ export function AICompaniesStory() {
         <div
           ref={registerCtaRef}
           id="ai-companies-register-cta"
-          className="absolute inset-x-0 bottom-0 z-20 border-t border-white/10 bg-bg/90 px-4 py-3 backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:bottom-8 lg:border-0 lg:bg-transparent lg:py-0 lg:backdrop-blur-none"
+          className="absolute inset-x-0 bottom-0 z-20 border-t border-white/10 bg-bg px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:bottom-8 lg:border-0 lg:bg-transparent lg:py-0"
           style={{ display: "none" }}
           aria-hidden
         >

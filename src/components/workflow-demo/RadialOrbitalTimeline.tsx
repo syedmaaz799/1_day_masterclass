@@ -7,8 +7,11 @@ import {
   useSyncExternalStore,
   useLayoutEffect,
   type ComponentType,
+  type CSSProperties,
   type MouseEvent,
 } from "react";
+import { useMediaQuery } from "@/components/motion/use-media-query";
+import { usePauseWhenOffscreen } from "@/components/motion/use-pause-when-offscreen";
 import { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced-motion";
 import { OrbitalNodeDetailCard } from "@/components/workflow-demo/OrbitalNodeDetailCard";
 import { cn } from "@/lib/utils";
@@ -92,6 +95,7 @@ export function RadialOrbitalTimeline({
   scrollControlled = false,
 }: RadialOrbitalTimelineProps) {
   const reducedMotion = usePrefersReducedMotion();
+  const coarsePointer = useMediaQuery("(pointer: coarse)", false);
   const isMounted = useSyncExternalStore(
     () => () => {},
     () => true,
@@ -107,6 +111,10 @@ export function RadialOrbitalTimeline({
   const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const onScreen = usePauseWhenOffscreen(containerRef);
+
+  const scrollTransitionMs =
+    scrollControlled && coarsePointer ? 650 : scrollControlled ? 1200 : 700;
 
   const scrollActiveId =
     scrollControlled && activeIndex != null
@@ -271,10 +279,15 @@ export function RadialOrbitalTimeline({
             }}
           >
             <div
-              className="absolute left-1/2 top-1/2 z-10 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-br from-primary via-primary/80 to-accent animate-[nv-core-breathe_7s_ease-in-out_infinite]"
+              className="animate-[nv-core-breathe_7s_ease-in-out_infinite] absolute left-1/2 top-1/2 z-10 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-br from-primary via-primary/80 to-accent"
+              style={
+                {
+                  animationPlayState: onScreen ? "running" : "paused",
+                } as CSSProperties
+              }
               aria-hidden
             >
-              {!reducedMotion ? (
+              {!reducedMotion && !coarsePointer ? (
                 <>
                   <div className="absolute size-20 rounded-full border border-white/20 opacity-70 animate-ping" />
                   <div
@@ -283,7 +296,7 @@ export function RadialOrbitalTimeline({
                   />
                 </>
               ) : null}
-              <div className="size-8 rounded-full bg-white/80 backdrop-blur-md" />
+              <div className="size-8 rounded-full bg-white/80 lg:backdrop-blur-md" />
             </div>
 
             <div
@@ -307,11 +320,13 @@ export function RadialOrbitalTimeline({
                       nodeRefs.current[item.id] = el;
                     }}
                     className={cn(
-                      "absolute left-1/2 top-1/2 transition-all",
-                      scrollControlled ? "duration-[1200ms] ease-out-expo" : "duration-700",
-                      scrollControlled ? "pointer-events-none" : "cursor-pointer",
+                      "absolute left-1/2 top-1/2 transition-all ease-out-expo",
+                      scrollControlled ? "pointer-events-none" : "cursor-pointer duration-700",
                     )}
                     style={{
+                      ...(scrollControlled
+                        ? { transitionDuration: `${scrollTransitionMs}ms` }
+                        : {}),
                       transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px))`,
                       zIndex: isExpanded ? 200 : position.zIndex,
                       opacity: isExpanded ? 1 : position.opacity,

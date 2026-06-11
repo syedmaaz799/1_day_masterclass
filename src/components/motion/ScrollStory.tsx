@@ -32,7 +32,7 @@ import { cn } from "@/lib/utils";
  */
 
 const SCRUB = 1; // seconds of eased catch-up — deliberate on desktop
-const SCRUB_COARSE_MAX = 0.35; // touch: keep crossfade in sync with finger scroll
+const SCRUB_COARSE_MAX = 0.2; // touch: keep crossfade in sync with finger scroll
 const HOLD = 0.22; // ± plateau (in stage-index units) where a stage stays fully visible
 const FADE = 0.62; // eased fade span after the plateau (creates the overlap window)
 const SHIFT = 40; // px translateY for spatial continuity through the crossover
@@ -300,7 +300,10 @@ export function StoryStage({ index, className, children }: StoryStageProps) {
   return (
     <div
       ref={ref}
-      className={cn("absolute inset-0 flex items-center will-change-[transform,opacity]", className)}
+      className={cn(
+        "absolute inset-0 flex items-center lg:will-change-[transform,opacity]",
+        className,
+      )}
       style={{ opacity: 0 }}
     >
       {children}

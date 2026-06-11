@@ -48,7 +48,7 @@ export function OrbitalNodeDetailCard({
     <Card
       padding="sm"
       className={cn(
-        "w-full border-white/30 bg-bg/90 shadow-xl shadow-white/10 backdrop-blur-lg",
+        "w-full border-white/30 bg-surface shadow-xl shadow-white/10 lg:bg-bg/90 lg:backdrop-blur-lg",
         className,
       )}
     >

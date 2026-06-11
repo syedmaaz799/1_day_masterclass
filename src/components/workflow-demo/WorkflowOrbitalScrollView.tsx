@@ -2,6 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import { ScrollStory, useStoryProgress } from "@/components/motion";
+import { useMediaQuery } from "@/components/motion/use-media-query";
 import { Caption, Eyebrow, Body, Card } from "@/components/ui";
 import { RadialOrbitalTimeline } from "@/components/workflow-demo/RadialOrbitalTimeline";
 import {
@@ -15,7 +16,10 @@ import {
 
 const N = agentTimelineData.length;
 /** More scroll per beat so orbit centering and card open/close are easy to follow. */
-const STAGE_VH = 115;
+const STAGE_VH_DESKTOP = 115;
+const STAGE_VH_MOBILE = 88;
+const SCRUB_DESKTOP = 2.25;
+const SCRUB_MOBILE = 0.2;
 
 /** Header + orbit share one pinned column — no full-viewport vertical centering gap. */
 const WORKFLOW_ORBIT_STICKY =
@@ -95,12 +99,14 @@ function OrbitalScrollExperience() {
 }
 
 export function WorkflowOrbitalScrollView() {
+  const coarsePointer = useMediaQuery("(pointer: coarse)", false);
+
   return (
     <div id="workflow-orbital" className="relative w-full scroll-mt-[var(--nav-h)]">
       <ScrollStory
         stageCount={WORKFLOW_ORBIT_STAGE_COUNT}
-        stageVh={STAGE_VH}
-        scrubSeconds={2.25}
+        stageVh={coarsePointer ? STAGE_VH_MOBILE : STAGE_VH_DESKTOP}
+        scrubSeconds={coarsePointer ? SCRUB_MOBILE : SCRUB_DESKTOP}
         scrollStoryTrack="workflow"
         trackId="workflow-demo-track"
         skipEntryFade
