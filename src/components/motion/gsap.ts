@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
  */
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
   // Lenis drives the ticker; disable GSAP lag smoothing so scrubbing stays in sync.
   gsap.ticker.lagSmoothing(0);
 }

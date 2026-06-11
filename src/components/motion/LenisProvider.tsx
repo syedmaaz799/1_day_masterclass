@@ -57,8 +57,14 @@ function LenisGsapBridge() {
 /** Keeps ScrollTrigger aligned with native touch scroll (no Lenis). */
 function NativeScrollGsapBridge() {
   useIsomorphicLayoutEffect(() => {
+    let ticking = false;
     const onScroll = () => {
-      ScrollTrigger.update();
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ScrollTrigger.update();
+        ticking = false;
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

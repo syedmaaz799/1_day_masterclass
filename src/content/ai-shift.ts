@@ -1,17 +1,35 @@
 /**
- * "The AI Shift" (Section 2) — reframed from a year timeline to the real shift:
- * the everyday tasks moving from manual work to AI-assisted work (08-copywriting).
- * No hype, no buzzwords — concrete jobs the attendee already recognises.
+ * "The AI Shift" (Section 2) — editorial scrollytelling copy.
+ * Anchor + vertical phrase track read as one evolving sentence on scroll.
  */
 
 export interface AutomationTask {
   id: string;
   task: string;
-  /** How it gets done by hand today. */
   manual: string;
-  /** How the agent handles it once built. */
   automated: string;
 }
+
+/** Pinned anchor — completes the sentence with each phrase. */
+export const aiShiftAnchor = {
+  eyebrow: "The shift",
+  headline: "Your agent can",
+} as const;
+
+/** Vertical track phrases (lowercase editorial rhythm). */
+export const shiftPhrases = [
+  "qualify leads.",
+  "draft emails.",
+  "send follow-ups.",
+  "answer customers.",
+  "schedule meetings.",
+  "research prospects.",
+] as const;
+
+/** Final payoff beat after the last phrase. */
+export const shiftPayoff = "do it all automatically." as const;
+
+export type ShiftPhrase = (typeof shiftPhrases)[number];
 
 export const automationTasks: readonly AutomationTask[] = [
   {

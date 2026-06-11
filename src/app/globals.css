@@ -250,6 +250,23 @@
   transform: none;
 }
 
+/* AI Shift — tall outer track; one viewport slice per line (same on all breakpoints). */
+.ai-shift-outer {
+  height: calc(var(--shift-lines, 7) * 100vh);
+  height: calc(var(--shift-lines, 7) * 100dvh);
+}
+
+.ai-shift-line {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+@media (pointer: fine) {
+  .ai-shift-line {
+    will-change: transform, opacity;
+  }
+}
+
 /* Vestibular safety: honor reduced-motion globally (06-motion / 11-accessibility). */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -269,6 +286,11 @@
     transform: none !important;
     filter: none !important;
     clip-path: none !important;
+  }
+
+  .ai-shift-line {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
