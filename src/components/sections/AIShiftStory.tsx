@@ -204,16 +204,8 @@ export function AIShiftStory() {
   const scrubSeconds = coarsePointer ? SCRUB_COARSE : SCRUB_DESKTOP;
 
   if (reduced) {
-    return (
-      <div className="bg-[#0d0d0d]">
-        <ShiftReducedEditorial />
-      </div>
-    );
+    return <ShiftReducedEditorial />;
   }
 
-  return (
-    <div className="bg-[#0d0d0d]">
-      <ShiftScrollLayout scrubSeconds={scrubSeconds} />
-    </div>
-  );
+  return <ShiftScrollLayout scrubSeconds={scrubSeconds} />;
 }

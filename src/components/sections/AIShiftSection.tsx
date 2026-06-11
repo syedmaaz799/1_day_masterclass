@@ -8,9 +8,15 @@ export function AIShiftSection() {
     <section
       id="ai-shift"
       aria-label="The AI shift: from manual work to AI-assisted work"
-      className="relative overflow-x-clip overflow-y-visible bg-[#0d0d0d]"
+      className="relative overflow-x-clip overflow-y-visible"
     >
-      <AIShiftStory />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-bg/25 lg:bg-[linear-gradient(to_right,var(--color-bg)_0%,rgb(5_5_5/0.45)_24%,transparent_65%)]"
+      />
+      <div className="relative">
+        <AIShiftStory />
+      </div>
     </section>
   );
 }
