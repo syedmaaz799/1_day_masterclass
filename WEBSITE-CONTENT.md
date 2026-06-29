@@ -21,7 +21,7 @@ It is **not** a course catalog, LMS, coaching portal, or SaaS product site. It i
 
 ## 2. What is being marketed (the offer in one paragraph)
 
-NeuralVarsity is selling a **two-day, live online, no-code masterclass** where participants build a real **AI employee** — an agent that can qualify leads, communicate on Telegram and Gmail, and automate business tasks without writing code. The session runs **6 hours total** (3 hours per day), includes **live Q&A**, a **certificate of completion**, and a **free career roadmap**. The listed price is **₹111** (shown against a compare-at value of **₹15,000**). Seats are limited (**236 remaining** of **500** in the current config).
+NeuralVarsity is selling a **two-day, live online, no-code masterclass** where participants build **four production AI agents** — a Q&A chatbot, a content creator assistant, a resume reviewer, and a voice news intelligence briefing — without writing code. The session runs **6 hours total** (3 hours per day), includes **live Q&A**, a **certificate of completion**, and a **free career roadmap**. The listed price is **₹111** (shown against a compare-at value of **₹15,000**). Seats are limited (**236 remaining** of **500** in the current config).
 
 ---
 
@@ -49,17 +49,20 @@ NeuralVarsity is selling a **two-day, live online, no-code masterclass** where p
 
 ## 4. Core promise
 
-**“Six hours. One working agent.”**
+**“Six hours. Four production agents.”**
 
 By the end of both live days, attendees should leave with:
 
-- A **deployed AI agent** connected to real tools (not slides-only theory)
+- **Four deployed production agents** — not slides-only theory
 - Skills in **agentic AI fundamentals** and **AI workflows**
-- Practical builds: lead generation, Telegram agent, Gmail automation
+- Practical builds: Q&A chatbot, content creator assistant, resume reviewer, voice news briefing
 - A **certificate of completion**
 - A **free personalized career roadmap**
 
 **No coding required** — visual, no-code tools only.
+
+**Registration bridge copy:**  
+*“Reserve your seat for two live days of building — three hours each Saturday and Sunday. Leave with four working AI agents, your certificate, and a free career roadmap — no coding required.”*
 
 ---
 
@@ -67,14 +70,12 @@ By the end of both live days, attendees should leave with:
 
 From the FAQ and positioning:
 
-- **Students**
-- **Early-career professionals**
-- **Founders / entrepreneurs**
-- **Freelancers**
-- **Job seekers**
-- Anyone who wants a **practical AI skill they can use immediately**
-- **No prior AI build experience** required
-- **Beginner friendly** — if you can follow instructions on a laptop, you can keep up
+- **Students** charting their first career path
+- **Early-career professionals** who want capability without a computer science degree
+- **Founders** who need automation without an engineering team
+- Anyone ready to move from **consuming AI to directing it**
+- **No prior AI build experience** required — curiosity and a laptop are enough
+- **First-time builders** can keep pace — foundations first, then sequential builds
 
 **Registration form captures:** name, email, phone, city, and current role (Student, Working professional, Founder / Entrepreneur, Freelancer, Job seeker, Other).
 
@@ -82,41 +83,42 @@ From the FAQ and positioning:
 
 ## 6. What you will learn (6-hour agenda)
 
+**Section eyebrow:** Two days  
+**Section title:** Six hours. Four production agents.  
+**Section description:**  
+*“Three hours each day — Saturday and Sunday, 2:00 PM to 5:00 PM IST. Each session moves from foundations to finished work. By Sunday evening, four agents exist in the world — not on a slide.”*
+
 ### Saturday — Day 1
 
-| Hour | Title | What you can do by the end |
-|------|--------|----------------------------|
-| **Hour 1** | AI Foundations | Understand how agentic AI actually works — and why it replaces **tasks**, not just answers questions. |
-| **Hour 2** | Build Your Agent | Start building a working AI agent live, with no code — wired toward real tools and real tasks. |
-| **Hour 3** | Tools & Memory | Connect your agent to tools and memory so it can act with **context**, not one-off replies. |
+| Hour | Title | Outcome |
+|------|--------|---------|
+| **Hour 1** | AI Foundations & Model Access | Ground yourself in how agentic AI thinks, decides, and acts — then secure the free open-source model API keys that power every build this weekend. You leave knowing why agents replace tasks, not just answers, and ready to ship. |
+| **Hour 2** | Q&A Chatbot & AI Content Creator Assistant | Ship your first two production agents. Build a Q&A chatbot — user input in, language model out, answer delivered — the clean three-step pipeline every agent runs on. Then wire an intent-routing content engine that classifies the ask and returns publish-ready social posts with hooks, CTAs, and hashtags, or professional ad copy with headlines and emotional triggers. Both go live before the hour ends. |
+| **Hour 3** | AI Resume Reviewer | Build and publish your AI Resume Reviewer. Upload a CV and route the request — full review, summary, cover letter, interview prep, or career advice. The pipeline extracts the document, analyzes each section, and returns improvement suggestions you can apply immediately. Live and accessible by session close. |
 
 ### Sunday — Day 2
 
-| Hour | Title | What you can do by the end |
-|------|--------|----------------------------|
-| **Hour 1** | Deploy Your Agent | Deploy what you built and get it running in a **live environment**. |
-| **Hour 2** | Telegram & Gmail | Connect your agent to **Telegram** and **Gmail** so it communicates and drafts on your behalf. |
-| **Hour 3** | Live Automation | Run your agent end to end — **lead in, action out** — and leave with automation you can use Monday. |
-
-**Agenda framing copy:**  
-*“Three hours each day — Saturday and Sunday, 2:00 PM to 5:00 PM IST. Every hour ends with something you can do — not just something you heard.”*
+| Hour | Title | Outcome |
+|------|--------|---------|
+| **Hour 1** | GitHub, IDEs & App Builders | Before your final build, understand the modern stack behind real AI products — version control with GitHub, the IDE platforms where software gets written, and visual app builders that turn ideas into shippable products. The foundation that separates a weekend experiment from something the world can use. |
+| **Hour 2** | Voice News Intelligence Briefing | Create your Voice News Intelligence Briefing — a voice-first research app that scans the news, synthesizes what matters, and speaks a clear briefing back. Not a mockup on your screen. A real product, built from scratch and ready to share. |
+| **Hour 3** | Deploy Live | Take your voice app from build to browser — deploy to a live URL, test every path end to end, and close the weekend with four production agents: a Q&A chatbot, a content creator, a resume reviewer, and a voice briefing anyone can open. |
 
 ---
 
-## 7. What you will see / build (five deliverables)
+## 7. What you will build (four deliverables)
 
-The site highlights five concrete agents/artifacts:
+The site highlights four concrete agents:
 
 | # | Name | Outcome |
 |---|------|---------|
-| 1 | **AI Lead Generator** | Capture and qualify leads automatically — no manual chasing. |
-| 2 | **Telegram Agent** | An agent that replies and notifies on Telegram for you. |
-| 3 | **Gmail Automation Agent** | Drafts and sends the right Gmail responses on your behalf. |
-| 4 | **Resume Reviewer** | Reviews resumes and returns structured, useful feedback. |
-| 5 | **Career Architect** | Maps a personalized career and skill path on demand. |
+| 1 | **Q&A Chatbot** | Your first live AI agent — user input in, language model out, answer delivered. A clean three-step pipeline that teaches the foundation every agent is built on. |
+| 2 | **AI Content Creator Assistant** | An intent-routing content engine — classify the ask, then generate publish-ready social posts with hooks, CTAs, and hashtags, or professional ad copy with headlines and emotional triggers. One assistant, five specialized paths. |
+| 3 | **AI Resume Reviewer** | Upload a CV and route the request — full review, summary, cover letter, interview prep, or career advice. Extracts the document, analyzes each section, and returns improvement suggestions you can apply immediately. |
+| 4 | **Voice News Intelligence Briefing** | A voice-first research app that scans the news, synthesizes what matters, and speaks a clear briefing back — built and shipped as a real product. |
 
-**Section title:** Five Agents you will see  
-**Section description:** Not slides, not demos. Working agents you leave the session owning.
+**Section title:** Four agents you will build  
+**Section description:** Production systems on industry tools — not slides, not mockups. Working agents you leave the session owning.
 
 ---
 
@@ -124,9 +126,10 @@ The site highlights five concrete agents/artifacts:
 
 Listed at registration:
 
-- Build an AI Lead Generator
-- Build a Telegram AI Agent
-- Build a Gmail Automation Agent
+- Build a Q&A Chatbot
+- Build an AI Content Creator Assistant
+- Build an AI Resume Reviewer
+- Build a Voice News Intelligence Briefing
 - Understand AI Workflows
 - Learn Agentic AI Fundamentals
 - Certificate of completion after the masterclass
@@ -231,7 +234,7 @@ Recap: AI Agents · AI Workflows · AI Companies → **“Now build your first A
 | 1 | **Hero** | Offer clarity in 5 seconds — title, subheadline, date/time/price, countdown, seats, CTAs |
 | 2 | **Registration (hero)** | Primary conversion form immediately after hero |
 | 3 | **The AI Shift** | Manual → automated story; why agents matter now |
-| 4 | **What You Will See** | Five agents / outcomes |
+| 4 | **What You Will Build** | Four agents / outcomes |
 | 5 | **Live Workflow** | Interactive orbital pipeline demo |
 | 6 | **Agenda** | Six-hour promise-per-hour breakdown |
 | 7 | **AI Companies** | Industry context and stack credibility |
@@ -249,27 +252,30 @@ Recap: AI Agents · AI Workflows · AI Companies → **“Now build your first A
 
 *Note: These are outcome-focused placeholders, not attributed to named individuals yet.*
 
-1. **Live masterclass · Agent build** — *“The session is built around deploying — you wire Telegram, Gmail, and a lead workflow in one sitting.”*
+1. **Live masterclass · Agent build** — *“The session is built around building — a Q&A chatbot, content creator, resume reviewer, and voice app across two live days.”*
 2. **No-code workflow** — *“Visual tools only. If you can follow steps on a laptop, you can keep up — no programming background required.”*
-3. **What you leave with** — *“You leave with an agent connected to real tools — not slides about what agents could do someday.”*
+3. **What you leave with** — *“You leave with four live agents you built yourself — not slides about what AI could do someday.”*
 
 ---
 
 ## 14. FAQ — full Q&A
 
-| Question | Answer (summary) |
-|----------|------------------|
-| Who is this masterclass for? | Students, early-career professionals, founders — practical AI skill, no prior build experience. |
-| Do I need coding experience? | **No.** Entirely no-code, visual tools. |
-| Is this beginner friendly? | **Yes.** Foundations first, step by step. |
-| Will there be a recording? | **Live, interactive two-day** masterclass — attend both sessions for Q&A and live build. |
-| How will I receive joining details? | Email with live access link immediately after registration. |
-| What tools will be used? | Industry-standard no-code and agent tools introduced live; laptop + internet + free accounts where needed. |
-| How do I make payment? | Submit form → secure checkout for **₹111** (₹15,000 value). |
-| Refund policy? | Contact after sessions if you couldn’t attend or didn’t understand — refund issued via footer email. |
-| What happens after registration? | Confirmation email + live link; attend both days with laptop; leave with deployed agent. |
-| Certificate? | **Yes** — for everyone who completes both days. |
-| Free career roadmap? | Personalized roadmap after masterclass — next steps for skills, projects, roles in the AI economy. |
+| Question | Answer |
+|----------|--------|
+| Who is this masterclass designed for? | Anyone ready to move from consuming AI to directing it — students charting their first career path, professionals who want capability without a computer science degree, and founders who need automation without an engineering team. Curiosity and a laptop are enough; prior build experience is not required. |
+| Is programming experience required? | No. Every agent is built with visual, no-code tools — the same approach teams use to ship production workflows without writing application code. You focus on architecture and outcomes; the platform handles the syntax. |
+| Can first-time builders keep pace? | Yes — deliberately so. We begin with how agentic AI thinks and acts, then construct each build in sequence. If you can follow a live walkthrough on your machine, you have everything this weekend demands. |
+| Are sessions recorded for later viewing? | This is a live, interactive two-day session by design. The value is in building alongside the instructor, asking questions in real time, and leaving with deployed agents — something a recording cannot replace. Plan to attend both days. |
+| How will I access the live sessions? | Immediately after registration. Your live access link arrives at the email you provide — keep it accessible for both Saturday and Sunday sessions. |
+| Which tools and setup are required? | Industry-standard no-code platforms for agents and applications, introduced step by step during the masterclass. You need a laptop, reliable internet, and free accounts where required — we walk through setup before the first build. |
+| How does the registration payment work? | After you submit this form, you proceed to secure checkout for ₹111 (₹15,000 value). Payment confirmation reserves your seat — without it, registration is not complete. |
+| What is the refund policy? | If you could not attend or did not gain clarity from the sessions, reach out after the masterclass and we will process a refund. Email the address in the footer with your registration details — we handle the rest. |
+| What happens once I reserve my seat? | A confirmation email with your live link lands within minutes. Arrive on time Saturday and Sunday with your laptop ready — by Sunday evening, four production agents live in the world: a Q&A chatbot, a content creator, a resume reviewer, and a voice news briefing. |
+| Is a certificate of completion included? | Yes. Completing both days earns a certificate of completion — evidence that you did not watch AI demos, you built with agentic systems. |
+| What does the complimentary career roadmap include? | After the masterclass, you receive a personalized career roadmap at no extra cost — a clear view of next skills, portfolio projects, and roles worth pursuing in an economy where builders define their own leverage. |
+
+**FAQ section intro:**  
+*Eyebrow: Still have questions? · Title: Everything you need to know before joining. · Description: Straight answers — no filler.*
 
 ---
 
@@ -347,7 +353,7 @@ Per project rules, the site avoids:
 
 ## 21. One-sentence elevator pitch
 
-**NeuralVarsity’s two-day live masterclass (₹111) teaches you to build a no-code AI employee that qualifies leads, talks on Telegram, drafts Gmail, and automates real work — in six hours across Saturday and Sunday, July 4–5, 2026.**
+**NeuralVarsity’s two-day live masterclass (₹111) teaches you to build four no-code production AI agents — a Q&A chatbot, content creator, resume reviewer, and voice news briefing — in six hours across Saturday and Sunday, July 4–5, 2026.**
 
 ---
 
@@ -371,4 +377,4 @@ Per project rules, the site avoids:
 
 ---
 
-*Document generated from the live codebase. Update this file when `src/content/event.ts` or section copy changes.*
+*Document generated from the live codebase. Update this file when `src/content/*.ts` or section copy changes.*

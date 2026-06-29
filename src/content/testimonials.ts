@@ -24,7 +24,7 @@ export const testimonials: readonly Testimonial[] = [
     name: "",
     role: "Live masterclass · Agent build",
     quote:
-      "The session is built around deploying — you wire Telegram, Gmail, and a lead workflow in one sitting.",
+      "The session is built around building — a Q&A chatbot, content creator, resume reviewer, and voice app across two live days.",
     videoSrc: null,
     posterSrc: null,
   },
@@ -42,7 +42,7 @@ export const testimonials: readonly Testimonial[] = [
     name: "",
     role: "What you leave with",
     quote:
-      "You leave with an agent connected to real tools — not slides about what agents could do someday.",
+      "You leave with four live agents you built yourself — not slides about what AI could do someday.",
     videoSrc: null,
     posterSrc: null,
   },

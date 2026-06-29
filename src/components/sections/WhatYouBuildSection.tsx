@@ -18,8 +18,8 @@ export function WhatYouBuildSection() {
         <Reveal>
           <SectionHeading
             eyebrow="What you will see"
-            title="Five Agents you will see"
-            description="Not slides, not demos. Working agents you leave the session owning."
+            title="Four agents you will build"
+            description="Production systems on industry tools — not slides, not mockups. Working agents you leave the session owning."
             id="build-heading"
           />
         </Reveal>

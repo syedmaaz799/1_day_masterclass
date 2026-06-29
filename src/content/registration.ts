@@ -4,9 +4,10 @@
  */
 
 export const registrationBenefits = [
-  "Build an AI Lead Generator",
-  "Build a Telegram AI Agent",
-  "Build a Gmail Automation Agent",
+  "Build a Q&A Chatbot",
+  "Build an AI Content Creator Assistant",
+  "Build an AI Resume Reviewer",
+  "Build a Voice News Intelligence Briefing",
   "Understand AI Workflows",
   "Learn Agentic AI Fundamentals",
   "Certificate of completion after the masterclass",
@@ -17,8 +18,8 @@ export const registrationBenefits = [
 
 export const whyAttend = {
   eyebrow: "Reserve your seat",
-  title: "Six hours. One working agent.",
-  body: "Reserve your seat for two live days of building — three hours each Saturday and Sunday. Leave with a working AI employee, your certificate, and a free career roadmap — no coding required.",
+  title: "Six hours. Four production agents.",
+  body: "Reserve your seat for two live days of building — three hours each Saturday and Sunday. Leave with four working AI agents, your certificate, and a free career roadmap — no coding required.",
 } as const;
 
 /** Compact ticket lines above the form (Issue 6). */
