@@ -1,4 +1,3 @@
-import { Play } from "lucide-react";
 import { Body, Caption, Eyebrow, Headline } from "@/components/ui";
 import { promoVideo } from "@/content/promo-video";
 import { cn } from "@/lib/utils";
@@ -8,8 +7,7 @@ type MasterclassPromoVideoPlaceholderProps = {
 };
 
 /**
- * Reserved 16:9 slot for the masterclass promotional video (CLS-safe).
- * Replace the inner frame with a hosted player when the asset is ready.
+ * 16:9 masterclass promo video slot (CLS-safe). User-initiated playback only.
  */
 export function MasterclassPromoVideoPlaceholder({
   className,
@@ -18,7 +16,7 @@ export function MasterclassPromoVideoPlaceholder({
     <figure
       id="promo-video"
       className={cn("mx-auto w-full max-w-4xl scroll-mt-[var(--nav-h)]", className)}
-      aria-label={promoVideo.placeholderAriaLabel}
+      aria-label={promoVideo.ariaLabel}
     >
       <figcaption className="mb-4 max-w-2xl">
         <Eyebrow tone="accent" withRule>
@@ -38,32 +36,22 @@ export function MasterclassPromoVideoPlaceholder({
           "shadow-[inset_0_1px_0_rgb(255_255_255/0.06)]",
         )}
       >
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgb(79_124_255/0.12),transparent_65%),linear-gradient(180deg,rgb(11_13_18/0.2)_0%,rgb(5_5_5/0.85)_100%)]"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(0deg,transparent,transparent_2px,rgb(255_255_255)_2px,rgb(255_255_255)_3px)",
-          }}
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-          <span
-            className={cn(
-              "flex size-16 items-center justify-center rounded-full border border-white/20 bg-bg/60",
-              "shadow-[0_0_32px_rgb(79_124_255/0.2)]",
-            )}
-            aria-hidden
-          >
-            <Play size={28} className="ml-1 text-text" strokeWidth={1.5} />
-          </span>
-          <Caption className="max-w-xs font-sans text-overline uppercase tracking-[0.16em] text-text-2">
-            Video placeholder
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          controls
+          preload="metadata"
+          playsInline
+          aria-label={promoVideo.ariaLabel}
+        >
+          <source src={promoVideo.src} type="video/mp4" />
+          <Caption as="p" className="p-6 text-text-2">
+            Your browser does not support embedded video.{" "}
+            <a href={promoVideo.src} className="text-primary underline-offset-4 hover:underline">
+              Download the preview
+            </a>
+            .
           </Caption>
-        </div>
+        </video>
       </div>
     </figure>
   );

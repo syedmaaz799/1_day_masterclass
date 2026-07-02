@@ -38,3 +38,6 @@ yarn-error.log*
 .idea
 .vscode/*
 !.vscode/extensions.json
+
+# promo video exceeds GitHub 100MB limit — keep locally in public/videos/
+*.mp4
